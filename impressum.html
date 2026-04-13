@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --yellow: #FFD600;
             --black: #0A0A0A;
             --white: #FAFAFA;
             --gray: #888;
@@ -25,117 +24,162 @@
             background: rgba(10,10,10,0.88); backdrop-filter: blur(12px);
             border-bottom: 1px solid #1a1a1a;
         }
-        .logo { font-family: 'Anton', sans-serif; font-size: 1.4rem; letter-spacing: .08em; color: var(--yellow); text-decoration: none; }
-        .back { font-size: .8rem; color: var(--gray); text-decoration: none; letter-spacing: .05em; }
-        .back:hover { color: var(--yellow); }
+        .logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: .12em;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .back {
+            font-size: .75rem;
+            color: var(--gray);
+            text-decoration: none;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .back:hover { color: var(--white); }
 
-        /* HERO */
-        .hero {
-            position: relative;
+        /* FULLSCREEN COLLAGE — top hero */
+        .collage-hero {
+            padding-top: 56px;
             width: 100%;
-            min-height: 100vh;
-            background: var(--black);
-            padding-top: 56px; /* nav height */
+            height: 100vh;
         }
 
-        /* 6-image grid: 3 cols × 2 rows — full image visible */
         .collage {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 4px;
+            gap: 3px;
             width: 100%;
-            height: calc(100vh - 56px);
+            height: 100%;
         }
 
         .collage-cell {
             background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
         .collage-cell img {
             width: 100%;
             height: 100%;
-            object-fit: contain;   /* full image, no crop */
+            object-fit: cover;
             display: block;
-            filter: brightness(.7) saturate(1.1);
-            transition: filter .3s ease;
+            filter: brightness(.65) saturate(1.05);
+            transition: filter .4s ease;
         }
-        .collage-cell img:hover { filter: brightness(.95) saturate(1.25); }
+        .collage-cell img:hover { filter: brightness(.85) saturate(1.2); }
 
-        /* EDGY overlay — centered, smaller */
-        .hero-overlay {
-            position: absolute;
-            inset: 56px 0 0 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .hero-title {
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(3.5rem, 10vw, 9rem);
-            letter-spacing: -.01em;
-            color: var(--yellow);
-            text-align: center;
-            text-shadow: 0 0 60px rgba(255,214,0,.45), 0 4px 24px rgba(0,0,0,.9);
-            background: rgba(10,10,10,.35);
-            padding: .2em .5em;
-            border-radius: 4px;
-        }
-
-        .hero-sub {
-            font-size: clamp(.6rem, 1.4vw, .85rem);
-            letter-spacing: .35em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,.6);
-            margin-top: .8rem;
-            text-align: center;
-        }
-
-        /* scroll arrow */
+        /* scroll hint */
         .scroll-hint {
-            position: absolute;
-            bottom: 1.5rem; left: 50%;
+            position: fixed;
+            bottom: 1.8rem; left: 50%;
             transform: translateX(-50%);
             display: flex; flex-direction: column; align-items: center; gap: .4rem;
-            color: rgba(255,255,255,.4);
-            font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+            color: rgba(255,255,255,.35);
+            font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
             animation: bob 2s ease-in-out infinite;
             pointer-events: none;
+            z-index: 50;
         }
-        .scroll-hint svg { width: 20px; height: 20px; }
+        .scroll-hint svg { width: 18px; height: 18px; }
         @keyframes bob {
             0%,100% { transform: translateX(-50%) translateY(0); }
-            50%      { transform: translateX(-50%) translateY(6px); }
+            50%      { transform: translateX(-50%) translateY(5px); }
+        }
+
+        /* SECOND ARTWORK BAND — wide images */
+        .artwork-band {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3px;
+            width: 100%;
+        }
+
+        .artwork-band .cell {
+            background: #0d0d0d;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .artwork-band .cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(.6);
+            transition: filter .4s;
+        }
+        .artwork-band .cell img:hover { filter: brightness(.8); }
+
+        /* FULL WIDTH SINGLE IMAGE */
+        .artwork-full {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .artwork-full img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            object-position: center 40%;
+            display: block;
+            filter: brightness(.5);
         }
 
         /* IMPRESSUM CONTENT */
-        #impressum { max-width: 660px; margin: 5rem auto; padding: 0 1.5rem 6rem; }
+        #impressum {
+            max-width: 640px;
+            margin: 6rem auto;
+            padding: 0 1.5rem 6rem;
+        }
 
-        .label { font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--yellow); margin-bottom: .5rem; }
-        h1 { font-family: 'Anton', sans-serif; font-size: 2.6rem; letter-spacing: .05em; color: var(--white); margin-bottom: 3rem; }
-        h2 { font-size: .68rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--gray); margin-top: 2.5rem; margin-bottom: .7rem; }
+        .label {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: .5rem;
+        }
+        h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.4rem;
+            letter-spacing: .06em;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        h2 {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 2.5rem;
+            margin-bottom: .7rem;
+        }
         p, address { font-size: 1rem; line-height: 1.8; color: #bbb; font-style: normal; }
-        a { color: var(--yellow); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--white); text-decoration: none; border-bottom: 1px solid #333; }
+        a:hover { border-color: var(--white); }
         hr { border: none; border-top: 1px solid #1e1e1e; margin: 2.5rem 0; }
 
-        footer { text-align: center; padding: 2rem; font-size: .75rem; color: #333; border-top: 1px solid #1a1a1a; letter-spacing: .1em; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: .72rem;
+            color: #333;
+            border-top: 1px solid #1a1a1a;
+            letter-spacing: .1em;
+        }
 
         @media (max-width: 768px) {
             .collage {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(3, 1fr);
-                height: calc(100svh - 56px); /* svh excludes mobile browser chrome */
             }
-            .collage-cell img {
-                object-fit: cover; /* fill cells fully, no black bars on mobile */
+            .artwork-band {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -143,33 +187,43 @@
 <body>
 
 <nav>
-    <a href="https://kittball-agentbuffler.github.io/mai-mucke-festival/" class="logo">EDGY</a>
-    <a href="https://kittball-agentbuffler.github.io/mai-mucke-festival/" class="back">← Festival</a>
+    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="logo">EDGY</a>
+    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="back">↗ Instagram</a>
 </nav>
 
-<section class="hero">
+<!-- HERO COLLAGE -->
+<div class="collage-hero">
     <div class="collage">
-        <div class="collage-cell"><img src="img/poster1.jpg"    alt="Mai Mucke Festival"></div>
-        <div class="collage-cell"><img src="img/neon.jpg"       alt="Neon Festival"></div>
-        <div class="collage-cell"><img src="img/blue_fuzzy.jpg" alt="Blue Fuzzy"></div>
-        <div class="collage-cell"><img src="img/jungle_neon.jpg"alt="Jungle Neon"></div>
-        <div class="collage-cell"><img src="img/yellow.jpg"     alt="Yellow Poster"></div>
-        <div class="collage-cell"><img src="img/newcomer.jpg"   alt="Newcomer Contest"></div>
+        <div class="collage-cell"><img src="img/poster1.jpg"     alt=""></div>
+        <div class="collage-cell"><img src="img/neon.jpg"        alt=""></div>
+        <div class="collage-cell"><img src="img/blue_fuzzy.jpg"  alt=""></div>
+        <div class="collage-cell"><img src="img/jungle_neon.jpg" alt=""></div>
+        <div class="collage-cell"><img src="img/yellow.jpg"      alt=""></div>
+        <div class="collage-cell"><img src="img/newcomer.jpg"    alt=""></div>
     </div>
+</div>
 
-    <div class="hero-overlay">
-        <div class="hero-title">EDGY</div>
-        <div class="hero-sub">Kulturförderung Solingen</div>
-    </div>
+<div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    scroll
+</div>
 
-    <div class="scroll-hint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-        Impressum
-    </div>
-</section>
+<!-- SECOND ARTWORK BAND -->
+<div class="artwork-band">
+    <div class="cell"><img src="img/jungle_neon.jpg" alt=""></div>
+    <div class="cell"><img src="img/blue_fuzzy.jpg"  alt=""></div>
+    <div class="cell"><img src="img/newcomer.jpg"    alt=""></div>
+    <div class="cell"><img src="img/neon.jpg"        alt=""></div>
+</div>
 
+<!-- FULL WIDTH IMAGE -->
+<div class="artwork-full">
+    <img src="img/poster1.jpg" alt="">
+</div>
+
+<!-- IMPRESSUM -->
 <section id="impressum">
     <p class="label">Rechtliches</p>
     <h1>IMPRESSUM</h1>
