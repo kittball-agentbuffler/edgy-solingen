@@ -128,9 +128,15 @@
 
         footer { text-align: center; padding: 2rem; font-size: .75rem; color: #333; border-top: 1px solid #1a1a1a; letter-spacing: .1em; }
 
-        @media (max-width: 600px) {
-            .collage { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
-            .collage-cell:nth-child(6) { display: none; }
+        @media (max-width: 768px) {
+            .collage {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                height: calc(100svh - 56px); /* svh excludes mobile browser chrome */
+            }
+            .collage-cell img {
+                object-fit: cover; /* fill cells fully, no black bars on mobile */
+            }
         }
     </style>
 </head>
@@ -174,7 +180,7 @@
     <hr>
 
     <h2>Kontakt</h2>
-    <p>Instagram: <a href="https://instagram.com/edgy.solingen" target="_blank">@edgy.solingen</a><br>
+    <p>Instagram: <a href="https://instagram.com/edgy.solingen" target="_blank" rel="noopener noreferrer">@edgy.solingen</a><br>
     E-Mail: <a href="mailto:info@edgykultur.de">info@edgykultur.de</a></p>
 
     <hr>
