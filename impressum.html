@@ -3,183 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum — EDGY Kulturförderung</title>
+    <title>EDGY Kulturförderung — Solingen</title>
     <style>
         @font-face { font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/Anton-Regular.woff2') format('woff2'); }
         @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('fonts/Inter-Variable.woff2') format('woff2'); }
     </style>
     <style>
-        :root { --g: 3px; --black: #0A0A0A; --white: #FAFAFA; --gray: #888; }
+        :root {
+            --black: #0A0A0A;
+            --white: #FAFAFA;
+            --gray: #777;
+            --yellow: #FFE600;
+            --divider: #1e1e1e;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
 
         /* ─── NAV ─── */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 1.5rem;
-            background: rgba(10,10,10,0.92); backdrop-filter: blur(14px);
-            border-bottom: 1px solid #1a1a1a;
+            position: fixed;
+            top: 0; width: 100%; z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10,10,10,0.97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--divider);
         }
-        .logo { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: .12em; color: var(--white); text-decoration: none; }
-        .back { font-size: .75rem; color: var(--gray); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; }
-        .back:hover { color: var(--white); }
+        .nav-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: .18em;
+            color: var(--white);
+            text-decoration: none;
+            transition: color .25s;
+        }
+        .nav-logo:hover { color: var(--yellow); }
+        .nav-link {
+            font-size: .72rem;
+            color: var(--gray);
+            text-decoration: none;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: color .25s;
+        }
+        .nav-link:hover { color: var(--white); }
 
-        /* ─── HERO: single full-width opener ─── */
-        .hero-opener {
-            padding-top: 56px;
-            width: 100%;
-            line-height: 0;
+        main { padding-top: 80px; }
+
+        /* ─── HERO ─── */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3rem;
+            text-align: center;
         }
-        .hero-opener img {
+
+        .hero-logo {
+            max-width: 260px;
             width: 100%;
             height: auto;
             display: block;
-            filter: brightness(.82);
+            margin: 0 auto 2rem;
         }
 
-        /* ─── MASONRY COLLAGE ─── */
-        /*
-            CSS columns masonry:
-            - width: 100% + height: auto = image shows FULLY, zero crop
-            - break-inside: avoid = no image splits across columns
-            - column-gap + margin-bottom = uniform 3px gutter, no layout gaps
-        */
-        .masonry {
-            columns: 3;
-            column-gap: var(--g);
-            background: var(--black);
-            padding: var(--g) 0;
+        .hero-headline {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.9rem;
+            letter-spacing: .05em;
+            color: var(--yellow);
+            line-height: 1.15;
+            margin-bottom: 1rem;
         }
 
-        .item {
-            break-inside: avoid;
-            display: block;
-            margin-bottom: var(--g);
+        .hero-subline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: .18em;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .hero-text {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.95;
+        }
+        .hero-text p + p { margin-top: 1.4rem; }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--divider) 20%, var(--divider) 80%, transparent);
+            margin: 5rem 0;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section + .section { margin-top: 5rem; }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 1rem;
+        }
+
+        .section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.9rem;
+            letter-spacing: .05em;
+            color: var(--yellow);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .section p {
+            font-size: 0.93rem;
+            color: #aaa;
+            line-height: 1.95;
+            margin-bottom: 1.4rem;
+        }
+
+        /* ─── PHOTO COLLAGE ─── */
+        .collage {
+            margin-top: 3.5rem;
+        }
+
+        /* Row 1: DJ portrait left (tall), 2 landscape stacked right */
+        .collage-main {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0.6rem;
+            height: 560px;
+        }
+
+        /* Row 2: 3 equal images + flyer portrait */
+        .collage-row2 {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            gap: 0.6rem;
+            margin-top: 0.6rem;
+            height: 300px;
+        }
+
+        .collage-item {
+            overflow: hidden;
             background: #111;
-            line-height: 0;
         }
 
-        .item img {
+        .collage-item img {
             width: 100%;
-            height: auto;          /* full image, never cropped */
+            height: 100%;
+            object-fit: cover;
             display: block;
-            filter: brightness(.78) saturate(1.05);
-            transition: filter .4s ease;
+            transition: transform .5s ease;
         }
-        .item img:hover { filter: brightness(.96) saturate(1.18); }
+        .collage-item:hover img { transform: scale(1.04); }
 
-        /* full-width span breaks the masonry — acts as a divider */
-        .item.fw {
-            column-span: all;
-            margin-bottom: var(--g);
+        .collage-dj {
+            grid-column: 1;
+            grid-row: 1 / 3;
         }
-        .item.fw img {
+        .collage-top-right {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .collage-mid-right {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .collage-flyer {
+            overflow: hidden;
+            background: #111;
+        }
+        .collage-flyer img {
             width: 100%;
-            height: auto;
-            filter: brightness(.72);
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform .5s ease;
         }
-        .item.fw img:hover { filter: brightness(.9); }
+        .collage-flyer:hover img { transform: scale(1.03); }
+
+        /* ─── LOGO CARDS ─── */
+        .logo-cards {
+            max-width: 900px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .logo-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            border: 1px solid var(--divider);
+            padding: 2.5rem 1.5rem;
+            aspect-ratio: 1;
+            cursor: default;
+            transition: border-color .3s, transform .3s;
+        }
+        .logo-card:hover {
+            border-color: var(--yellow);
+            transform: translateY(-3px);
+        }
+        .logo-card img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+            transition: filter .3s;
+        }
+        .logo-card:hover img { filter: brightness(1.12); }
 
         /* ─── IMPRESSUM ─── */
-        #impressum {
+        .impressum {
             max-width: 640px;
             margin: 6rem auto;
-            padding: 0 1.5rem 6rem;
+            padding: 0 2rem 6rem;
         }
-        .label { font-size: .65rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gray); margin-bottom: .5rem; }
-        h1 { font-family: 'Anton', sans-serif; font-size: 2.4rem; letter-spacing: .06em; color: var(--white); margin-bottom: 3rem; }
-        h2 { font-size: .65rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--gray); margin-top: 2.5rem; margin-bottom: .7rem; }
-        p, address { font-size: 1rem; line-height: 1.8; color: #bbb; font-style: normal; }
-        a { color: var(--white); text-decoration: none; border-bottom: 1px solid #333; }
-        a:hover { border-color: var(--white); }
-        hr { border: none; border-top: 1px solid #1e1e1e; margin: 2.5rem 0; }
-        footer { text-align: center; padding: 2rem; font-size: .72rem; color: #333; border-top: 1px solid #1a1a1a; letter-spacing: .1em; }
+
+        .impressum h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            letter-spacing: .08em;
+            color: var(--yellow);
+            margin-bottom: 2.5rem;
+        }
+
+        .impressum h3 {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .impressum p,
+        .impressum address {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #999;
+            font-style: normal;
+        }
+
+        .impressum a {
+            color: var(--yellow);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,230,0,.35);
+            transition: border-color .25s;
+        }
+        .impressum a:hover { border-color: var(--yellow); }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--divider);
+            margin: 2.2rem 0;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.7rem;
+            color: #333;
+            border-top: 1px solid var(--divider);
+            letter-spacing: .14em;
+        }
 
         /* ─── RESPONSIVE ─── */
-        @media (max-width: 900px) {
-            .masonry { columns: 2; }
+        @media (max-width: 768px) {
+            nav { padding: .9rem 1.5rem; }
+
+            .hero { padding: 2rem 1.5rem 2.5rem; }
+            .hero-logo { max-width: 200px; margin-bottom: 1.5rem; }
+            .hero-headline { font-size: 1.6rem; }
+            .hero-subline { font-size: 0.75rem; }
+
+            .section { padding: 0 1.5rem; }
+            .section h2 { font-size: 1.5rem; }
+
+            .collage-main {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 220px 180px;
+                height: auto;
+            }
+            .collage-dj { grid-column: 1; grid-row: 1 / 3; }
+            .collage-top-right { grid-column: 2; grid-row: 1; }
+            .collage-mid-right { grid-column: 2; grid-row: 2; }
+
+            .collage-row2 {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 160px 200px;
+                height: auto;
+            }
+            .collage-row2 .collage-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+            .collage-row2 .collage-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+            .collage-flyer { grid-column: 1 / 3; grid-row: 2; max-width: 260px; margin: 0 auto; width: 100%; }
+
+            .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .logo-card { padding: 2rem 1.5rem; }
+
+            .impressum { padding: 0 1.5rem 4rem; }
+            .impressum h2 { font-size: 1.6rem; }
         }
+
         @media (max-width: 480px) {
-            .masonry { columns: 2; column-gap: 2px; }
-            .item { margin-bottom: 2px; }
-            .item.fw { margin-bottom: 2px; }
+            .hero-headline { font-size: 1.7rem; }
+            .cards-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="logo">EDGY</a>
-    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="back">↗ Instagram</a>
+    <a href="#" class="nav-logo">EDGY</a>
+    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="nav-link">↗ Instagram</a>
 </nav>
 
-<!-- OPENER: dramatic full-width, full image -->
-<div class="hero-opener">
-    <img src="img/a14.png" alt="MAI MUCKE FESTIVAL">
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <img src="img/edgy_logo_cropped.png" alt="EDGY" class="hero-logo">
+    <h1 class="hero-headline">Wir denken Kultur neu.</h1>
+    <p class="hero-subline">Events · Musik · Workshops · Talks · Community</p>
+    <div class="hero-text">
+        <p>Edgy entsteht aus der Idee, Kultur in Solingen sichtbarer, zugänglicher und zukunftsfähiger zu machen. Wir verbinden Musik, lokale Netzwerke, junge Talente, kreative Bildung, Technologie und neue Veranstaltungsformate.</p>
+        <p>Mit dem ersten MAI MUCKE FESTIVAL haben wir gezeigt, was möglich ist: ein lebendiger Marktplatz, starke Partner, ein diverses Publikum, großartige Artists und eine Stimmung, die unsere Erwartungen deutlich übertroffen hat.</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── RÜCKBLICK ─── -->
+<section class="section">
+    <p class="section-label">Der Auftakt</p>
+    <h2>MAI MUCKE FESTIVAL –<br>was für ein Auftakt</h2>
+    <p>Das erste MAI MUCKE FESTIVAL war ein voller Erfolg und ein starkes Signal für die Region. Es hat gezeigt, dass Solingen Raum für neue Kulturformate hat – offen, professionell, nahbar und mit echter Energie aus der Stadt heraus.</p>
+    <p>Danke an alle Besucherinnen und Besucher, Artists, Partner, Helferinnen und Helfer, die diesen Tag möglich gemacht haben.</p>
+
+    <!-- PHOTO COLLAGE -->
+    <div class="collage">
+        <div class="collage-main">
+            <div class="collage-item collage-dj">
+                <img src="img/mm_dj_stage.jpg" alt="DJ auf der Bühne">
+            </div>
+            <div class="collage-item collage-top-right">
+                <img src="img/mm_crowd_day1.png" alt="Publikum am Tag">
+            </div>
+            <div class="collage-item collage-mid-right">
+                <img src="img/mm_crowd_night1.jpg" alt="Publikum in der Nacht">
+            </div>
+        </div>
+        <div class="collage-row2">
+            <div class="collage-item">
+                <img src="img/mm_crowd_day2.jpg" alt="Festival Nachmittag">
+            </div>
+            <div class="collage-item">
+                <img src="img/mm_crowd_night2.jpg" alt="Festival Nacht mit Neon">
+            </div>
+            <div class="collage-flyer">
+                <img src="img/mm_flyer.png" alt="MAI MUCKE FESTIVAL Flyer">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── WEITER ─── -->
+<section class="section">
+    <p class="section-label">Die Zukunft</p>
+    <h2>Edgy geht weiter</h2>
+    <p>Aus dem erfolgreichen Auftakt entsteht jetzt mehr: neue Events, Pop-up-Formate, Workshops, Podcast- und Talkformate, Nachwuchsförderung und Kooperationen mit Menschen und Institutionen, die Kultur aktiv mitgestalten wollen.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── LOGO CARDS ─── -->
+<div class="logo-cards">
+    <div class="cards-grid">
+        <div class="logo-card">
+            <img src="img/logo1.png" alt="EDGY Logo I">
+        </div>
+        <div class="logo-card">
+            <img src="img/logo2.png" alt="EDGY Logo II">
+        </div>
+        <div class="logo-card">
+            <img src="img/logo3.png" alt="EDGY Logo III">
+        </div>
+    </div>
 </div>
 
-<!-- ─── MASONRY COLLAGE: 24 unique images, zero crop ─── -->
-<div class="masonry">
+<div class="divider"></div>
 
-    <!-- row 1 flow -->
-    <div class="item"><img src="img/logo2.png"  alt=""></div><!-- red snake logo -->
-    <div class="item"><img src="img/hf1.png"    alt=""></div>
-    <div class="item"><img src="img/a15.png"    alt=""></div><!-- tropical islands -->
-    <div class="item"><img src="img/hf2.png"    alt=""></div>
-    <div class="item"><img src="img/a17.png"    alt=""></div><!-- blue FOR FREE -->
-    <div class="item"><img src="img/hf3.png"    alt=""></div>
-    <div class="item"><img src="img/logo1.png"  alt=""></div><!-- orange felt logo -->
-    <div class="item"><img src="img/hf4.png"    alt=""></div>
-    <div class="item"><img src="img/a19.png"    alt=""></div><!-- beer 1. MAI -->
-    <div class="item"><img src="img/hf5.png"    alt=""></div>
-    <div class="item"><img src="img/a20.png"    alt=""></div><!-- fruits & veggies -->
-    <div class="item"><img src="img/hf6.png"    alt=""></div>
+<!-- ─── IMPRESSUM ─── -->
+<section class="impressum">
+    <p class="section-label">Rechtliches</p>
+    <h2>IMPRESSUM</h2>
 
-    <!-- row 2 flow -->
-    <div class="item"><img src="img/a13.jpg"    alt=""></div><!-- MAI MUCKE Hummel -->
-    <div class="item"><img src="img/hf7.png"    alt=""></div>
-    <div class="item"><img src="img/a18.png"    alt=""></div><!-- pink texture poster -->
-    <div class="item"><img src="img/hf8.png"    alt=""></div>
-    <div class="item"><img src="img/a21.png"    alt=""></div><!-- black liquid gold -->
-    <div class="item"><img src="img/hf9.png"    alt=""></div>
-    <div class="item"><img src="img/logo3.png"  alt=""></div><!-- metal gradient logo -->
-    <div class="item"><img src="img/hf10.png"   alt=""></div>
-    <div class="item"><img src="img/hf11.png"   alt=""></div>
-
-
-</div>
-
-<!-- ─── IMPRESSUM TEXT ─── -->
-<section id="impressum">
-    <p class="label">Rechtliches</p>
-    <h1>IMPRESSUM</h1>
-
-    <h2>Angaben gemäß § 5 TMG</h2>
+    <h3>Angaben gemäß § 5 TMG</h3>
     <address>Arndt Roerig<br>Hitdorfer Straße 186<br>51371 Leverkusen<br>Deutschland</address>
 
     <hr>
 
-    <h2>Kontakt</h2>
+    <h3>Kontakt</h3>
     <p>Instagram: <a href="https://instagram.com/edgy.solingen" target="_blank" rel="noopener noreferrer">@edgy.solingen</a><br>
     E-Mail: <a href="mailto:info@edgykultur.de">info@edgykultur.de</a></p>
 
     <hr>
 
-    <h2>Verantwortlich für den Inhalt</h2>
+    <h3>Verantwortlich für den Inhalt</h3>
     <p>Arndt Roerig<br>Anschrift wie oben</p>
 
     <hr>
 
-    <h2>Haftungsausschluss</h2>
+    <h3>Haftungsausschluss</h3>
     <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität können wir keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte nach den allgemeinen Gesetzen verantwortlich.</p>
 
     <hr>
 
-    <h2>Urheberrecht</h2>
+    <h3>Urheberrecht</h3>
     <p>Die erstellten Inhalte unterliegen dem deutschen Urheberrecht. Vervielfältigung und Verbreitung bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>
 </section>
+
+</main>
 
 <footer>© 2026 EDGY Kulturförderung · Solingen</footer>
 
