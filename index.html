@@ -3,68 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDGY Kulturförderung — Solingen</title>
+    <title>EDGY — Kulturförderung Solingen</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ─── ONE-PAGE OVERRIDES ─── */
+        html { scroll-behavior: smooth; }
+
+        /* Active nav highlight on scroll */
+        .nav-links a.active { color: var(--yellow); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(255,230,0,0.09) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-logo {
+            width: min(560px, 88vw);
+            height: auto;
+            display: block;
+            margin: 0 auto 2rem;
+        }
+        .hero-tagline {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 5.5vw, 4rem);
+            letter-spacing: .06em;
+            line-height: 1.05;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+        .hero-tagline span { color: var(--yellow); }
+        .hero-sub {
+            font-size: 0.8rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 2.8rem;
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: #444;
+            text-decoration: none;
+        }
+        .hero-scroll::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, #444, transparent);
+            animation: scrollline 2s ease-in-out infinite;
+        }
+        @keyframes scrollline {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.15); }
+        }
+
+        /* ─── ABOUT ─── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .about-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            display: block;
+        }
+        .about-text { padding-top: 1rem; }
+        .about-text h2 { margin-bottom: 1.2rem; }
+        .about-text p { margin-bottom: 1rem; }
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.8rem;
+        }
+        .tag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            border: 1px solid rgba(255,230,0,0.35);
+            padding: 0.3rem 0.8rem;
+        }
+
+        /* ─── GALLERY ─── */
+        #galerie { padding-top: 1rem; }
+        .gallery-intro {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+        .gallery-grid {
+            columns: 3;
+            column-gap: 0.4rem;
+            padding: 0 2rem 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .gallery-grid img {
+            width: 100%;
+            display: block;
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+            transition: opacity .3s;
+        }
+        .gallery-grid img:hover { opacity: 0.82; }
+
+        /* ─── ZUKUNFT ─── */
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid var(--divider);
+            margin-top: 2.5rem;
+        }
+        .future-card {
+            padding: 2.2rem 1.8rem;
+            border-right: 1px solid var(--divider);
+        }
+        .future-card:last-child { border-right: none; }
+        .future-card .tag { margin-bottom: 0.8rem; display: inline-block; }
+        .future-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: .06em;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+        .future-card p { font-size: 0.82rem; color: #777; margin: 0; }
+
+        /* ─── CTA STRIP ─── */
+        .cta-strip {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: rgba(255,230,0,0.04);
+            border-top: 1px solid var(--divider);
+            border-bottom: 1px solid var(--divider);
+        }
+        .cta-strip h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            color: var(--yellow);
+            letter-spacing: .06em;
+            margin-bottom: 1rem;
+        }
+        .cta-strip p {
+            font-size: 0.88rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ─── IMPRESSUM SECTION ─── */
+        #impressum { scroll-margin-top: 70px; }
+        .impressum-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+        .impressum-inner h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: var(--yellow);
+            margin-bottom: 2rem;
+        }
+        .impressum-inner h3 {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .impressum-inner p,
+        .impressum-inner address {
+            font-size: 0.88rem;
+            color: #888;
+            line-height: 1.9;
+            font-style: normal;
+        }
+        .impressum-inner a { color: var(--yellow); text-decoration: none; }
+        .impressum-inner hr { border: none; border-top: 1px solid var(--divider); margin: 1.2rem 0; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-img { aspect-ratio: 16/9; }
+            .future-grid { grid-template-columns: 1fr; }
+            .future-card { border-right: none; border-bottom: 1px solid var(--divider); }
+            .future-card:last-child { border-bottom: none; }
+            .gallery-grid { columns: 2; padding: 0 1.2rem 3rem; }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { columns: 1; }
+            .hero-tagline { font-size: 1.9rem; }
+        }
+
+        /* scroll-margin for anchors below fixed nav */
+        #home, #about, #galerie, #zukunft { scroll-margin-top: 70px; }
+    </style>
 </head>
 <body>
 
+<!-- ─── NAV ─── -->
 <nav>
-    <a href="index.html" class="nav-logo">
+    <a href="#home" class="nav-logo">
         <img src="img/edgy_nav_logo.png" alt="EDGY">
     </a>
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="galerie.html">Galerie</a></li>
-        <li><a href="zukunft.html">Zukunft</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#zukunft">Zukunft</a></li>
+        <li><a href="#impressum">Impressum</a></li>
     </ul>
 </nav>
 
-<main>
+<!-- ─── HOME ─── -->
+<section id="home" class="hero">
+    <img src="img/edgyheaderlogo.png" alt="EDGY" class="hero-logo">
+    <h1 class="hero-tagline"><span>Kultur</span><br>neu denken.</h1>
+    <p class="hero-sub">Solingen &amp; darüber hinaus — Musik · Kunst · Community</p>
+    <a href="#about" class="btn">Mehr erfahren</a>
+    <a href="#about" class="hero-scroll">Scroll</a>
+</section>
 
-    <!-- HERO -->
-    <section class="hero">
-        <img src="img/edgyheaderlogo.png" alt="EDGY" class="hero-logo">
-        <h1 class="hero-tagline"><span>CULTURE</span><br>WITHOUT LIMITS</h1>
-        <p class="hero-sub">Solingen · Musik · Kunst · Community</p>
-        <a href="about.html" class="btn">Discover More</a>
-    </section>
-
-    <!-- PILLARS -->
-    <div class="pillars">
-        <div class="pillar">
-            <p class="pillar-num">01</p>
-            <h3>Kultur</h3>
-        </div>
-        <div class="pillar">
-            <p class="pillar-num">02</p>
-            <h3>Community</h3>
-        </div>
-        <div class="pillar">
-            <p class="pillar-num">03</p>
-            <h3>Experience</h3>
+<!-- ─── ABOUT ─── -->
+<section id="about">
+    <div class="section">
+        <div class="about-grid">
+            <img src="img/mm_dj_stage.jpg" alt="MAI MUCKE Festival" class="about-img">
+            <div class="about-text">
+                <p class="section-label">Wer wir sind</p>
+                <h2>EDGY ist mehr<br>als ein Event</h2>
+                <p>Was in Solingen beginnt, denkt größer. EDGY ist eine Kulturinitiative, die lokale Energie mit überregionaler Strahlkraft verbindet — Musik, Kunst, Workshops und echte Begegnungen, die Grenzen verschieben.</p>
+                <p>Kein Party-Brand. Eine Haltung. Eine Plattform für Artists, Ideen und Communities, die in der Region Raum suchen — und ihn verdienen.</p>
+                <p>Gegründet von Tube &amp; Berger und MAKU — mit dem Herz in Solingen, dem Blick nach vorne.</p>
+                <div class="tag-row">
+                    <span class="tag">Solingen</span>
+                    <span class="tag">Musik</span>
+                    <span class="tag">Kunst</span>
+                    <span class="tag">Community</span>
+                    <span class="tag">Pop-Up</span>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="divider" style="margin-top:0"></div>
+<div class="divider"></div>
 
-    <!-- TEASER -->
-    <section class="section">
-        <p class="section-label">Der Auftakt</p>
-        <h2>MAI MUCKE FESTIVAL —<br>was für ein Start</h2>
-        <p>Das erste MAI MUCKE FESTIVAL war ein klares Signal: Solingen hat Raum für neue Kulturformate. Offen, professionell, nahbar — mit echter Energie aus der Stadt heraus.</p>
-        <a href="galerie.html" class="btn" style="margin-top:0.5rem">Zur Galerie</a>
-    </section>
+<!-- ─── GALERIE ─── -->
+<section id="galerie">
+    <div class="gallery-intro">
+        <p class="section-label">MAI MUCKE FESTIVAL · 01.05.2026</p>
+        <h2>Der Tag in Bildern</h2>
+        <p>Ohligser Marktplatz, Solingen. Kostenlos. Offen für alle.<br>Ein Signal, dass hier etwas entsteht.</p>
+    </div>
 
-</main>
+    <div class="gallery-grid">
+        <img src="img/mm_flyer.png" alt="MAI MUCKE FESTIVAL Flyer">
+        <img src="img/mm_dj_stage.jpg" alt="DJ auf der Bühne">
+        <img src="img/mm_crowd_day1.png" alt="Crowd am Tag">
+        <img src="img/mm_crowd_night1.jpg" alt="Crowd in der Nacht">
+        <img src="img/mm_crowd_day2.jpg" alt="Festival Nachmittag">
+        <img src="img/mm_crowd_night2.jpg" alt="Festival Nacht">
+        <img src="img/mm_p5.jpg" alt="Festival Moment">
+        <img src="img/mm_p6.jpg" alt="Festival Moment">
+        <img src="img/mm_p7.jpg" alt="Festival Moment">
+        <img src="img/mm_p8.jpg" alt="Festival Moment">
+        <img src="img/mm_p9.jpg" alt="Festival Moment">
+        <img src="img/mm_p10.jpg" alt="Festival Moment">
+        <img src="img/mm_p11.jpg" alt="Festival Moment">
+        <img src="img/mm_p12.jpg" alt="Festival Moment">
+    </div>
+</section>
 
+<div class="divider"></div>
+
+<!-- ─── ZUKUNFT ─── -->
+<section id="zukunft">
+    <div class="section">
+        <p class="section-label">Was kommt</p>
+        <h2>EDGY geht weiter</h2>
+        <p>Das MAI MUCKE FESTIVAL war erst der Anfang. Aus dem erfolgreichen Auftakt entsteht eine Plattform — für Solingen und die Region, für alle, die Kultur nicht konsumieren, sondern gestalten wollen.</p>
+
+        <div class="future-grid">
+            <div class="future-card">
+                <span class="tag">Events</span>
+                <h3>Pop-Up Festivals</h3>
+                <p>Neue Formate, neue Orte — immer dort, wo die Stadt lebt.</p>
+            </div>
+            <div class="future-card">
+                <span class="tag">Bildung</span>
+                <h3>Workshops &amp; Talks</h3>
+                <p>Kreative Bildung, Nachwuchsförderung, echte Begegnung.</p>
+            </div>
+            <div class="future-card">
+                <span class="tag">Media</span>
+                <h3>Podcast &amp; Content</h3>
+                <p>Geschichten aus der Region — für die Region und darüber hinaus.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<div class="cta-strip">
+    <h2>Dabei sein.</h2>
+    <p>Folge uns auf Instagram — für News, Ankündigungen und alles, was noch kommt.</p>
+    <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener" class="btn">↗ @edgy.solingen</a>
+</div>
+
+<!-- ─── IMPRESSUM ─── -->
+<section id="impressum">
+    <div class="impressum-inner">
+        <p class="section-label">Rechtliches</p>
+        <h2>Impressum</h2>
+
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <address>Arndt Roerig<br>Hitdorfer Straße 186<br>51371 Leverkusen<br>Deutschland</address>
+        <hr>
+        <h3>Kontakt</h3>
+        <p>Instagram: <a href="https://instagram.com/edgy.solingen" target="_blank" rel="noopener">@edgy.solingen</a><br>
+        E-Mail: <a href="mailto:info@edgykultur.de">info@edgykultur.de</a></p>
+        <hr>
+        <h3>Verantwortlich für den Inhalt</h3>
+        <p>Arndt Roerig — Anschrift wie oben</p>
+        <hr>
+        <h3>Haftungsausschluss</h3>
+        <p>Die Inhalte wurden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität kann keine Gewähr übernommen werden.</p>
+        <hr>
+        <h3>Urheberrecht</h3>
+        <p>Die Inhalte unterliegen dem deutschen Urheberrecht. Vervielfältigung bedarf der schriftlichen Zustimmung.</p>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
 <footer>
     © 2026 EDGY Kulturförderung · Solingen &nbsp;·&nbsp;
     <a href="https://www.instagram.com/edgy.solingen" target="_blank" rel="noopener">Instagram</a>
-    &nbsp;·&nbsp;
-    <a href="impressum.html">Impressum</a>
 </footer>
+
+<!-- ─── SCROLL SPY ─── -->
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            navLinks.forEach(a => a.classList.remove('active'));
+            const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+            if (link) link.classList.add('active');
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
 
 </body>
 </html>
