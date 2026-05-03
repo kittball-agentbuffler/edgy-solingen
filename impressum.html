@@ -69,12 +69,12 @@
         }
 
         .hero-logo {
-            max-width: 280px;
+            max-width: 300px;
             width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto 2rem;
-            filter: drop-shadow(0 0 12px rgba(255,230,0,0.35)) drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(2px 2px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(0 0 8px rgba(255,230,0,0.5));
         }
 
         .hero-headline {
@@ -108,7 +108,7 @@
         .divider {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--divider) 20%, var(--divider) 80%, transparent);
-            margin: 5rem 0;
+            margin: 3rem 0;
         }
 
         /* ─── SECTIONS ─── */
@@ -118,7 +118,7 @@
             padding: 0 2rem;
         }
 
-        .section + .section { margin-top: 5rem; }
+        .section + .section { margin-top: 3rem; }
 
         .section-label {
             font-size: 0.65rem;
@@ -159,13 +159,13 @@
             height: 560px;
         }
 
-        /* Row 2: 3 equal images + flyer portrait */
+        /* Row 2: 2 landscape images + centered flyer portrait */
         .collage-row2 {
             display: grid;
-            grid-template-columns: 2fr 2fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 280px;
             gap: 0.6rem;
             margin-top: 0.6rem;
-            height: 300px;
         }
 
         .collage-item {
@@ -196,14 +196,17 @@
         }
 
         .collage-flyer {
-            overflow: hidden;
-            background: #111;
+            grid-column: 1 / 3;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0.6rem 0 0;
+            background: none;
+            overflow: visible;
         }
         .collage-flyer img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
+            width: 260px;
+            height: auto;
             display: block;
             transition: transform .5s ease;
         }
@@ -407,7 +410,7 @@
                 <img src="img/mm_crowd_night2.jpg" alt="Festival Nacht mit Neon">
             </div>
             <div class="collage-flyer">
-                <img src="img/poster1.jpg" alt="MAI MUCKE FESTIVAL Flyer">
+                <img src="img/mm_flyer.png" alt="MAI MUCKE FESTIVAL Flyer">
             </div>
         </div>
     </div>
