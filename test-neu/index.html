@@ -86,8 +86,10 @@ p+p{margin-top:1em}
 .hero .note{margin-top:.9rem;font-size:.85rem;color:var(--muted)}
 .hero .note b{color:var(--silver-100);font-weight:600}
 .fireflies{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.fireflies i{position:absolute;width:4px;height:4px;border-radius:50%;background:radial-gradient(circle,#d9fff2 0%,var(--glow) 40%,rgba(127,224,194,0) 70%);box-shadow:0 0 10px 2px rgba(127,224,194,.35);opacity:0;animation:fly var(--d,9s) ease-in-out var(--w,0s) infinite}
-@keyframes fly{0%{opacity:0;transform:translate(0,0)}20%{opacity:.9}50%{opacity:.35;transform:translate(var(--x,20px),var(--y,-40px))}80%{opacity:.8}100%{opacity:0;transform:translate(calc(var(--x,20px)*1.6),calc(var(--y,-40px)*1.8))}}
+.fireflies i{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#effff9 0%,var(--glow) 45%,rgba(127,224,194,0) 75%);box-shadow:0 0 14px 4px rgba(127,224,194,.55);opacity:0;animation:fly var(--d,9s) ease-in-out calc(var(--w,0s)*-1) infinite}
+.fireflies i:nth-child(3n){width:7px;height:7px}
+.fireflies i:nth-child(4n+1){width:3px;height:3px}
+@keyframes fly{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}50%{opacity:.6;transform:translate(var(--x,20px),var(--y,-40px))}80%{opacity:.95}100%{opacity:0;transform:translate(calc(var(--x,20px)*1.6),calc(var(--y,-40px)*1.8))}}
 
 /* TICKETS */
 .tickets{background:linear-gradient(to bottom,var(--bg),var(--forest-900))}
@@ -107,6 +109,7 @@ p+p{margin-top:1em}
 /* LINEUP */
 .lineup{background:var(--forest-900)}
 .lineup .grid{display:grid;gap:40px}
+.lineup .intro{color:var(--silver-300);max-width:56ch;margin-bottom:28px}
 .acts{list-style:none;border-top:1px solid var(--line)}
 .acts li{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.2rem 1rem;padding:16px 0;border-bottom:1px solid var(--line)}
 .acts .name{font:400 clamp(1.3rem,5.6vw,2rem)/1.05 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--silver-100)}
@@ -215,6 +218,20 @@ details.impressum p{max-width:62ch}
     <i style="left:94%;top:74%;--d:13s;--w:4.4s;--x:-35px;--y:-45px"></i>
     <i style="left:9%;top:90%;--d:11s;--w:2.2s;--x:40px;--y:-70px"></i>
     <i style="left:96%;top:33%;--d:14.5s;--w:5.1s;--x:-30px;--y:-30px"></i>
+    <i style="left:14%;top:22%;--d:12s;--w:3.2s;--x:30px;--y:-35px"></i>
+    <i style="left:24%;top:56%;--d:9.5s;--w:7.1s;--x:-25px;--y:-55px"></i>
+    <i style="left:33%;top:76%;--d:11.5s;--w:1.4s;--x:35px;--y:-45px"></i>
+    <i style="left:45%;top:24%;--d:13s;--w:5.7s;--x:-30px;--y:-25px"></i>
+    <i style="left:50%;top:90%;--d:10s;--w:2.9s;--x:20px;--y:-65px"></i>
+    <i style="left:57%;top:70%;--d:12.5s;--w:6.1s;--x:-20px;--y:-50px"></i>
+    <i style="left:68%;top:50%;--d:9s;--w:.6s;--x:30px;--y:-40px"></i>
+    <i style="left:72%;top:88%;--d:14s;--w:3.9s;--x:-35px;--y:-60px"></i>
+    <i style="left:81%;top:24%;--d:11s;--w:6.9s;--x:20px;--y:-30px"></i>
+    <i style="left:85%;top:46%;--d:13.5s;--w:2.3s;--x:-25px;--y:-45px"></i>
+    <i style="left:92%;top:86%;--d:10.5s;--w:4.7s;--x:-30px;--y:-70px"></i>
+    <i style="left:4%;top:76%;--d:12s;--w:5.5s;--x:35px;--y:-50px"></i>
+    <i style="left:11%;top:50%;--d:9.5s;--w:1.8s;--x:25px;--y:-35px"></i>
+    <i style="left:38%;top:44%;--d:14.5s;--w:6.5s;--x:-20px;--y:-40px"></i>
   </div>
   <div class="wrap">
     <p class="label">Solingens Indoor Festival</p>
@@ -249,7 +266,7 @@ details.impressum p{max-width:62ch}
         <p class="small">Ausverkauft. Danke euch!</p>
       </article>
     </div>
-    <p class="tix-info rv">Tickets gibt es auch direkt im <a href="https://www.walder-stadtsaal.de/">Walder Stadtsaal</a>. Abendkasse bis 25 €, solange es noch Tickets gibt.</p>
+    <p class="tix-info rv">Tickets gibt es auch direkt im <a href="https://www.walder-stadtsaal.de/">Walder Stadtsaal</a>. Dazu kommt eine limitierte Abendkasse.</p>
   </div>
 </section>
 
@@ -259,8 +276,9 @@ details.impressum p{max-width:62ch}
     <div>
       <p class="label rv">Line-up</p>
       <h2 class="rv">7 Acts. Eine Nacht.</h2>
+      <p class="intro rv">Eine neue Tradition: Zweimal im Jahr rufen Tube &amp; Berger ganz Solingen zusammen. Sonst stehen die beiden auf den großen Bühnen der Welt. An diesen zwei Tagen spielen sie zu Hause. Im Mai kamen über 5.000 Leute auf den Ohligser Marktplatz, im November wird der Walder Stadtsaal zum Wald. Festival-Feeling, für das man sonst bis nach Amsterdam oder Ibiza fährt, gibt es jetzt auch hier.</p>
       <ul class="acts">
-        <li class="head rv"><span class="name">Tube &amp; Berger</span><span class="tag">Headliner · aus Solingen auf die Bühnen von Ibiza und Tomorrowland</span></li>
+        <li class="head rv"><span class="name">Tube &amp; Berger</span></li>
         <li class="rv"><span class="name">Nick Schwenderling</span></li>
         <li class="rv"><span class="name">Felicia Bianco</span></li>
         <li class="rv"><span class="name">Frank Sonic</span></li>
