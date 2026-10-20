@@ -19,7 +19,6 @@
 <meta property="og:url" content="https://edgykultur.de/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="fonts/archivo-black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/anton-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/forest-hero-m.webp" media="(max-width: 800px)">
 <link rel="preload" as="image" type="image/webp" imagesrcset="img/forest-hero-d-1920.webp 1920w, img/forest-hero-d-3200.webp 3200w" imagesizes="100vw" media="(min-width: 801px)">
 <script type="application/ld+json">
@@ -35,322 +34,152 @@
 "organizer":[{"@type":"Organization","name":"EDGY","url":"https://edgykultur.de"},{"@type":"Organization","name":"Walder Stadtsaal","url":"https://www.walder-stadtsaal.de"}],
 "offers":{"@type":"Offer","url":"https://www.eventim.de/event/forest-festival-walder-stadtsaal-walder-stadtsaal-22087939/","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
 </script>
-<script>document.documentElement.className+=' js';</script>
 <style>
-/* Schriften: alle selbst gehostet, alle unter SIL Open Font License */
-@font-face{font-family:Anton;src:url(fonts/anton-regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:Inter;src:url(fonts/inter-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:Inter;src:url(fonts/inter-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
-  --bg:#07090A;--bg2:#0A120F;--moss:#13241D;--ink:#0A0A0A;
-  --edgy:#F6D30C;--glow:#7FE0C2;
-  --s100:#F2F4F5;--s300:#C9CED2;--s500:#8A9196;
-  --text:#E8ECEE;--muted:#9AA3A8;--line:rgba(201,206,210,.18);
-  --poster:Anton,Impact,"Arial Narrow Bold","Arial Narrow",sans-serif;
-  --wide:"Archivo Black","Arial Black",Impact,sans-serif;
+  --bg:#07090A;--forest-900:#0B1411;--forest-700:#13241D;--moss:#2E4A3C;--glow:#7FE0C2;
+  --silver-100:#F2F4F5;--silver-300:#C9CED2;--silver-500:#8A9196;
+  --text:#E8ECEE;--muted:#9AA3A8;--line:rgba(201,206,210,.16);
+  --edgy:#F6D30C;--edgy-ink:#0A0A0A;
+  --display:"Archivo Black",Impact,"Arial Black",sans-serif;
   --body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Roboto Mono","Liberation Mono",monospace;
-  --g:clamp(18px,4.6vw,64px);
-  --col:clamp(16px,1.8vw,28px);
-  --chrome:linear-gradient(180deg,#ffffff 0%,#e3e7e9 36%,#8b9398 51%,#eef1f2 64%,#aab1b6 100%);
-  --ease:cubic-bezier(.2,.7,.2,1);
+  --gutter:clamp(18px,5vw,48px);--max:1120px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{background:var(--bg);color:var(--text);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-b,strong{font-weight:600}
-:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
-.nw{white-space:nowrap;font-weight:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.label{font:600 .75rem/1.2 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--silver-300)}
+.silver{background:linear-gradient(100deg,#9aa1a6 0%,#f4f6f7 22%,#b9bfc3 38%,#ffffff 50%,#a9b0b4 64%,#eef1f2 82%,#8f969b 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+h2{font:400 clamp(1.9rem,7vw,3.2rem)/1.02 var(--display);letter-spacing:.01em;text-transform:uppercase;margin:.5rem 0 1.25rem}
+section{padding:clamp(72px,12vw,128px) 0;position:relative}
+p+p{margin-top:1em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:52px;padding:0 1.6em;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--edgy);color:var(--edgy-ink);box-shadow:0 8px 28px rgba(246,211,12,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(246,211,12,.28)}
+.btn-ghost{border:1px solid var(--silver-500);color:var(--silver-100)}
+.btn-ghost:hover{border-color:var(--silver-100);background:rgba(255,255,255,.05)}
+:focus-visible{outline:2px solid var(--edgy);outline-offset:3px}
 
-/* Chrom-Schrift wie auf dem Plakat */
-.chrome{color:var(--s100)}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .chrome{background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.95) 50%,transparent 58%) 130% 0/250% 100% no-repeat,var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-}
-@keyframes sheen{0%,62%{background-position:130% 0,0 0}100%{background-position:-30% 0,0 0}}
-
-/* Buttons: kantig, rechts schräg angeschnitten wie der EDGY-Blitz */
-.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:56px;padding:0 1.55em 0 1.25em;font:400 1.3rem/1 var(--poster);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;color:var(--ink);transition:transform .2s var(--ease)}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--edgy);clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .2s}
-.btn svg{width:1em;height:1em;flex:none}
-.btn:hover{transform:translateX(3px)}
-.btn:hover::before{background:#FFE34D}
-.btn-s::before{background:var(--s100)}
-.btn-s:hover::before{background:#fff}
-.btn-ink{color:var(--edgy)}
-.btn-ink::before{background:var(--ink)}
-.btn-ink:hover::before{background:#222}
-.btn-sm{min-height:44px;font-size:1.1rem;padding:0 1.15em 0 .9em}
-.btn-sm::before{clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
-
-/* NAV: großes Logo oben, schrumpft beim Scrollen zur Marke */
-.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px var(--g) 10px;transition:background .35s,padding .35s,box-shadow .35s}
-.brand{display:block;line-height:0}
-.brand img{height:clamp(84px,24vw,96px);width:auto;transition:height .4s var(--ease);filter:drop-shadow(0 4px 18px rgba(0,0,0,.45))}
-.menu{display:flex;align-items:center;gap:2px;padding-top:4px}
-.menu a:not(.btn){display:inline-flex;align-items:center;min-height:44px;min-width:44px;justify-content:center;padding:0 9px;font:600 .95rem/1 var(--body);text-decoration:none;color:var(--s100);text-shadow:0 1px 10px rgba(0,0,0,.6)}
-.menu a:not(.btn):hover{color:var(--edgy)}
-.menu .btn{margin-left:6px}
-.menu a{white-space:nowrap}
-.dt-only{display:none}
-@media (min-width:1000px){.dt-only{display:inline}}
-@media (max-width:359px){.menu a[href="#ort"]{display:none}.brand img{height:76px}}
-.nav.solid{background:rgba(7,9,10,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);align-items:center;padding-top:6px;padding-bottom:6px;box-shadow:0 1px 0 var(--line)}
-.nav.solid .brand img{height:46px}
-.nav.solid .menu{padding-top:0}
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);transition:background .3s,backdrop-filter .3s}
+.nav.solid{background:rgba(7,9,10,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav img{height:clamp(62px,6.5vw,92px);width:auto;transition:height .3s}
+.nav.solid img{height:clamp(46px,4.5vw,62px)}
+.about .logo-big{margin:.6rem 0 0}
+.about .logo-big img{width:clamp(220px,42vw,400px);height:auto}
+.nav a.tix{font:600 .85rem/1 var(--body);text-decoration:none;padding:.7em 1.1em;border:1px solid var(--silver-500);border-radius:999px}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;padding:150px 0 clamp(30px,5.5vh,64px)}
-.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}
-.hero picture img{animation:kb 2.6s var(--ease) both}
-@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,10,.62) 0%,rgba(7,9,10,0) 20%,rgba(7,9,10,0) 30%,rgba(7,9,10,.5) 46%,rgba(7,9,10,.84) 64%,rgba(7,9,10,.95) 82%,var(--bg) 100%)}
-.hero-in{position:relative;width:100%;padding:0 var(--g);display:grid;gap:22px}
-.kicker{font:500 .9rem/1.3 var(--mono);color:var(--s100);letter-spacing:0;text-shadow:0 1px 12px rgba(0,0,0,.8)}
-.wordmark{font:400 clamp(3.3rem,15.6vw,11rem)/.86 var(--wide);text-transform:uppercase;letter-spacing:-.012em;margin-top:.45rem;filter:drop-shadow(0 3px 0 rgba(0,0,0,.4))}
-.wordmark .l{display:block;overflow:hidden;padding:.05em 0 .04em}
-.wordmark .l>span{display:inline-block;animation:rise 1.15s var(--ease) both,sheen 9s ease-in-out 1.6s infinite}
-.wordmark .l+.l>span{animation-delay:.12s,2.2s}
-@keyframes rise{from{transform:translateY(108%)}to{transform:none}}
-.meta{font:600 1.05rem/1.4 var(--body);color:var(--s100)}
-.meta .date{display:block;font:400 clamp(2.5rem,11.6vw,4.4rem)/.95 var(--poster);letter-spacing:.01em;margin-bottom:.32rem}
-.meta>span{color:var(--s500);padding:0 .3em}
-.meta>span:first-of-type{display:none}
-.lead{color:var(--s300);max-width:32ch;margin-top:.65rem}
-.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:1.3rem}
-.note{font-size:.92rem;color:var(--s300)}
-.note b{color:var(--s100)}
-@media (min-width:1000px){
-  .brand img{height:clamp(110px,9.2vw,140px)}
-  .menu a:not(.btn){font-size:1rem;padding:0 14px}
-  .hero{padding-bottom:clamp(40px,7vh,84px)}
-  .hero-in{grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:end}
-  .hero-title{grid-column:1/9}
-  .hero-info{grid-column:9/13;padding-bottom:.6rem}
-  .wordmark{font-size:min(10.4vw,12rem)}
-  .hero::after{background:linear-gradient(180deg,rgba(7,9,10,.6) 0%,rgba(7,9,10,0) 22%,rgba(7,9,10,0) 42%,rgba(7,9,10,.72) 70%,var(--bg) 100%),linear-gradient(90deg,rgba(7,9,10,0) 55%,rgba(7,9,10,.55) 100%)}
-}
-
-/* Glühwürmchen: 44 Stück, grün und ein paar violette wie die Kampagnenlichter */
-.fireflies{position:absolute;inset:0;z-index:-2;pointer-events:none}
-.fireflies i{--ff:#7FE0C2;--ffg:rgba(127,224,194,.55);position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#f4fffb 0%,var(--ff) 48%,rgba(127,224,194,0) 74%);box-shadow:0 0 12px 3px var(--ffg);opacity:0;animation:fly var(--d,9s) ease-in-out calc(var(--w,0s)*-1) infinite;will-change:transform,opacity}
-.fireflies i::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:radial-gradient(circle,var(--ffg) 0%,rgba(0,0,0,0) 68%);animation:blink calc(var(--d,9s)*.29) ease-in-out calc(var(--w,0s)*-1) infinite alternate}
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(48px,9vh,96px);overflow:hidden;isolation:isolate}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero picture img{animation:kb 2.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes kb{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(7,9,10,.55) 0%,rgba(7,9,10,0) 22%,rgba(7,9,10,0) 40%,rgba(7,9,10,.82) 72%,var(--bg) 100%)}
+.hero h1{font:400 clamp(3rem,13.5vw,7.4rem)/.9 var(--display);letter-spacing:-.005em;text-transform:uppercase;margin:.9rem 0 1.1rem}
+.hero .meta{font:600 clamp(1.05rem,4.2vw,1.35rem)/1.35 var(--body);color:var(--silver-100)}
+.nw{white-space:nowrap;font-weight:inherit}
+.hero .meta span{color:var(--silver-500);padding:0 .35em}
+.hero .lead{color:var(--silver-300);max-width:30ch;margin:.7rem 0 1.8rem;font-size:1.05rem}
+.hero .note{margin-top:.9rem;font-size:.85rem;color:var(--muted)}
+.hero .note b{color:var(--silver-100);font-weight:600}
+.fireflies{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.fireflies i{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#effff9 0%,var(--glow) 45%,rgba(127,224,194,0) 75%);box-shadow:0 0 14px 4px rgba(127,224,194,.55);opacity:0;animation:fly var(--d,9s) ease-in-out calc(var(--w,0s)*-1) infinite}
 .fireflies i:nth-child(3n){width:7px;height:7px}
 .fireflies i:nth-child(4n+1){width:3px;height:3px}
-.fireflies i:nth-child(7n+3){--ff:#DCCFFF;--ffg:rgba(185,162,255,.6)}
-.fireflies i:nth-child(11n+5){width:11px;height:11px;filter:blur(2px)}
-@keyframes fly{
-  0%{opacity:0;transform:translate3d(0,0,0)}
-  14%{opacity:1}
-  34%{transform:translate3d(calc(var(--x,20px)*.7),calc(var(--y,-40px)*.35),0)}
-  52%{opacity:.55;transform:translate3d(calc(var(--x,20px)*-.25),calc(var(--y,-40px)*.85),0)}
-  78%{opacity:.95;transform:translate3d(calc(var(--x,20px)*1.05),calc(var(--y,-40px)*1.35),0)}
-  100%{opacity:0;transform:translate3d(calc(var(--x,20px)*1.6),calc(var(--y,-40px)*1.8),0)}}
-@keyframes blink{from{opacity:.2;transform:scale(.6)}to{opacity:1;transform:scale(1.3)}}
-
-/* große Zahlen als Grafik */
-.big{font-family:var(--poster);font-weight:400;line-height:.84;letter-spacing:-.005em;padding:.06em 0 .02em;white-space:nowrap}
-.js .wipe{clip-path:inset(-25% 100% -25% 0);transition:clip-path 1.25s cubic-bezier(.7,0,.2,1)}
-.js .wipe.in{clip-path:inset(-25% -5% -25% 0)}
-.wipe.in.chrome{animation:sheen 2.4s ease-out .5s 1 both}
-.js .rise{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-@media (min-width:1100px){.js .rise{transition-delay:calc(var(--i,0)*90ms)}}
-.js .rise.in{opacity:1;transform:none}
+@keyframes fly{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}50%{opacity:.6;transform:translate(var(--x,20px),var(--y,-40px))}80%{opacity:.95}100%{opacity:0;transform:translate(calc(var(--x,20px)*1.6),calc(var(--y,-40px)*1.8))}}
 
 /* TICKETS */
-.tickets{position:relative;overflow:hidden;padding:clamp(24px,5vw,56px) 0 clamp(56px,10vw,150px);background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-.tix-date{font-size:clamp(6.5rem,46vw,27rem);padding-left:calc(var(--g) - .03em);margin-bottom:clamp(8px,2vw,24px)}
-.tix{padding:0 var(--g);display:grid;gap:clamp(24px,4vw,40px)}
-.tix-h{font:400 clamp(2.8rem,13vw,8rem)/.9 var(--poster);text-transform:uppercase;color:var(--s100)}
-.tier{display:grid;gap:12px;padding:30px 0 34px;border-top:1px solid var(--line)}
-.kick{font:500 .9rem/1.3 var(--mono);color:var(--s300)}
-.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--glow);margin-right:.65em;vertical-align:.05em;box-shadow:0 0 0 0 rgba(127,224,194,.55);animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,224,194,.55)}80%,100%{box-shadow:0 0 0 12px rgba(127,224,194,0)}}
-.tier h3{font:400 clamp(3.6rem,17vw,7rem)/.88 var(--poster);text-transform:uppercase;color:var(--s100)}
-.tier .small{color:var(--s300);max-width:38ch}
-.tier .btn{margin-top:10px}
-.tier-crew h3{font-size:clamp(2.2rem,9vw,3.4rem);white-space:nowrap}
-.price{font-size:clamp(6rem,30vw,11rem);order:-1;margin:-.08em 0 -.04em;word-spacing:-.12em}
-.tier-gone{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-bottom:0}
-.tier-gone h3{font-size:clamp(1.9rem,7vw,2.6rem);color:var(--s500);text-decoration:line-through;text-decoration-thickness:3px}
-.tier-gone .kick,.tier-gone .small{color:var(--muted)}
-.tix-info{color:var(--s300);max-width:52ch}
-.tix-info a{color:var(--s100);text-underline-offset:3px}
-@media (max-width:999px){.tier-now .btn,.tier-crew .btn{width:100%;max-width:440px}}
-@media (min-width:1000px){
-  .tix-date{text-align:right;padding:0;margin-right:-.05em;font-size:min(31vw,27rem)}
-  .tix-h span{display:block}
-  .tix{grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:start}
-  .tix-h{grid-column:1/5;position:sticky;top:110px}
-  .tiers{grid-column:5/13}
-  .tix-info{grid-column:5/13}
-  .tier-now{grid-template-columns:1fr auto;column-gap:32px;align-items:end}
-  .tier-now>*{grid-column:1}
-  .tier-now .btn{grid-column:2;grid-row:1/5;align-self:end}
-  .tier-crew{grid-template-columns:auto 1fr auto;column-gap:clamp(24px,3vw,48px);align-items:end}
-  .tier-crew .price{grid-column:1;grid-row:1/5;align-self:end;margin:0;font-size:clamp(6rem,8.6vw,9.5rem)}
-  .tier-crew>*:not(.price):not(.btn){grid-column:2}
-  .tier-crew .btn{grid-column:3;grid-row:1/5;align-self:end}
-}
+.tickets{background:linear-gradient(to bottom,var(--bg),var(--forest-900))}
+.cards{display:grid;gap:16px;grid-template-columns:1fr}
+.card{border:1px solid var(--line);border-radius:18px;padding:24px;background:rgba(19,36,29,.35);display:flex;flex-direction:column;gap:.5rem}
+.card.active{border-color:var(--silver-300);box-shadow:inset 0 0 0 1px rgba(242,244,245,.08),0 20px 50px rgba(0,0,0,.35)}
+.card h3{font:400 1.45rem/1.1 var(--display);text-transform:uppercase}
+.card .price{font:400 2.4rem/1 var(--display);color:var(--silver-100)}
+.card .small{color:var(--muted);font-size:.9rem}
+.card .btn{margin-top:auto;align-self:flex-start}
+.card.gone{opacity:.55}
+.card.gone h3{text-decoration:line-through;text-decoration-thickness:2px}
+.tix-info{margin-top:22px;color:var(--silver-300);font-size:.95rem}
+.tix-info a{color:var(--silver-100)}
+@media(min-width:760px){.cards{grid-template-columns:1.1fr 1fr .8fr}}
 
-/* LINE-UP: sieben Kapseln, alle gleich groß, Reihenfolge wie auf dem Plakat */
-.lineup{position:relative;overflow:hidden;padding:clamp(64px,11vw,150px) 0 clamp(80px,11vw,140px);background:radial-gradient(70% 42% at 50% 74%,rgba(127,224,194,.11),rgba(0,0,0,0) 70%),radial-gradient(42% 30% at 88% 26%,rgba(185,162,255,.10),rgba(0,0,0,0) 70%),var(--bg2)}
-.lu-top{padding:0 var(--g);display:grid;gap:26px;margin-bottom:clamp(40px,6vw,80px)}
-.lu-h{display:flex;align-items:flex-end;gap:.1em;font:400 clamp(2.9rem,12.6vw,6.6rem)/.88 var(--poster);text-transform:uppercase;color:var(--s100)}
-.lu-7{font-size:2.75em;line-height:.8;padding:.06em .02em 0 0}
-.lu-t{display:block;padding-bottom:.04em}
-.lu-t span{display:block}
-.intro{color:var(--s300);font-size:clamp(1.05rem,1.25vw,1.2rem);line-height:1.62;max-width:44ch}
-.acts{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:clamp(136px,38vw,250px);gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:8px var(--g) 22px;scroll-padding-inline:var(--g);scrollbar-width:none}
-.acts::-webkit-scrollbar{display:none}
-.acts li{scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:16px}
-.acts picture{position:relative;display:block;width:100%}
-.acts picture::after{content:"";position:absolute;left:6%;right:6%;bottom:-14px;height:26px;border-radius:50%;background:radial-gradient(closest-side,rgba(127,224,194,.32),rgba(127,224,194,0));z-index:-1}
-.acts img{width:100%;height:auto;transition:transform .5s var(--ease),filter .5s}
-.name{font:400 clamp(1.2rem,5.3vw,1.65rem)/1.04 var(--poster);text-transform:uppercase;letter-spacing:.025em;color:var(--s100);text-align:center;text-wrap:balance}
-.shelf-bar{position:relative;height:2px;margin:4px var(--g) 0;background:rgba(242,244,245,.14)}
-.shelf-bar i{position:absolute;top:0;bottom:0;left:calc(var(--x,0)*100%);width:calc(var(--w,.3)*100%);background:var(--s100);transition:left .1s linear}
-.lu-foot{padding:0 var(--g);margin-top:clamp(40px,6vw,80px);display:grid;gap:36px}
-.after-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
-.after-cta span{font:500 .92rem/1.35 var(--mono);color:var(--s300)}
-.flyer{display:grid;grid-template-columns:clamp(110px,32vw,150px) 1fr;gap:18px;align-items:end;max-width:420px}
-.flyer a{display:block;line-height:0}
-.flyer img{box-shadow:0 22px 50px rgba(0,0,0,.6)}
-.flyer figcaption{font-size:.98rem;color:var(--s300);line-height:1.45}
-@media (min-width:700px){.acts{grid-auto-columns:clamp(150px,27vw,230px)}}
-@media (min-width:1000px){
-  .lu-top{grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:end}
-  .lu-h{grid-column:1/7}
-  .intro{grid-column:8/12;padding-bottom:.4rem}
-  .lu-foot{grid-template-columns:1fr auto;align-items:end}
-}
-@media (min-width:1100px){
-  .acts{grid-auto-flow:row;grid-template-columns:repeat(7,1fr);overflow:visible;scroll-snap-type:none;gap:clamp(12px,1.5vw,26px)}
-  .acts li:nth-child(even){margin-top:clamp(28px,3.4vw,56px)}
-  .shelf-bar{display:none}
-  .acts li:hover img{transform:translateY(-8px);filter:brightness(1.08)}
-}
+/* LINEUP */
+.lineup{background:var(--forest-900)}
+.lineup .grid{display:grid;gap:40px}
+.lineup .intro{color:var(--silver-300);max-width:56ch;margin-bottom:28px}
+.acts{list-style:none;border-top:1px solid var(--line)}
+.acts li{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.2rem 1rem;padding:16px 0;border-bottom:1px solid var(--line)}
+.acts .name{font:400 clamp(1.3rem,5.6vw,2rem)/1.05 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--silver-100)}
+.acts .tag{font-size:.82rem;color:var(--muted)}
+.acts li.head .tag{color:var(--silver-300)}
+.flyer{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.flyer-cap{margin-top:12px;font-size:.85rem;color:var(--muted)}
+.after-cta{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+@media(min-width:900px){.lineup .grid{grid-template-columns:1.2fr .8fr;align-items:start}}
 
 /* ORT */
-.ort{position:relative;overflow:hidden;background:var(--bg)}
-.ort-img{position:relative;aspect-ratio:1/1}
-.ort-img img{width:100%;height:100%;object-fit:cover}
-.ort-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,10,0) 40%,rgba(7,9,10,.72) 76%,var(--bg) 100%)}
-.ort-txt{position:relative;z-index:1;padding:0 var(--g) clamp(80px,12vw,140px);margin-top:-7.2rem}
-.ort h2{font:400 clamp(3rem,13.6vw,7.2rem)/.9 var(--poster);text-transform:uppercase;color:var(--s100);max-width:8.5ch;text-shadow:0 2px 30px rgba(0,0,0,.45)}
-.ort-txt>p{color:var(--s300);max-width:46ch;margin-top:24px}
-.facts{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;max-width:560px}
-.facts div{display:flex;flex-direction:column;gap:5px;padding-top:12px;border-top:1px solid var(--line)}
-.facts dt{font:500 .82rem/1.2 var(--mono);color:var(--muted)}
-.facts dd{font:600 1.02rem/1.38 var(--body);color:var(--s100)}
-.facts dd a{text-underline-offset:3px}
-.facts .wide{grid-column:1/-1}
-@media (min-width:1000px){
-  .ort{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:center;padding:clamp(90px,9vw,150px) var(--g) clamp(90px,9vw,150px) 0}
-  .ort-img{grid-column:1/7;aspect-ratio:auto;height:min(86vh,820px)}
-  .ort-img::after{background:linear-gradient(90deg,rgba(7,9,10,0) 55%,var(--bg) 100%),linear-gradient(180deg,var(--bg) 0%,rgba(7,9,10,0) 14%,rgba(7,9,10,0) 86%,var(--bg) 100%)}
-  .ort-txt{grid-column:7/13;margin:0;padding:0 0 0 0}
-  .ort h2{margin-left:-24%;max-width:9ch}
-}
+.ort{background:linear-gradient(to bottom,var(--forest-900),var(--bg))}
+.ort .grid{display:grid;gap:32px}
+.ort .img{border-radius:18px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line)}
+.ort .img img{width:100%;height:100%;object-fit:cover}
+.facts{list-style:none;margin-top:28px;display:grid;gap:0;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:13px 0;border-bottom:1px solid var(--line);font-size:.97rem}
+.facts li span:first-child{color:var(--muted)}
+.facts a{color:var(--silver-100)}
+@media(min-width:900px){.ort .grid{grid-template-columns:1fr 1fr;align-items:center;gap:64px}}
 
-/* MAI MUCKE */
-.mm{position:relative;overflow:hidden;background:var(--bg);padding:clamp(70px,10vw,130px) 0 clamp(130px,17vw,240px)}
-.mm-head{padding:0 var(--g);display:grid;gap:8px}
-.mm-h{font:400 clamp(1.7rem,7.4vw,3.4rem)/.95 var(--poster);text-transform:uppercase;color:var(--s300)}
-.mm-num{font-size:clamp(5.8rem,35.5vw,21rem);margin-left:-.03em}
-.mm-cap{color:var(--s300);font-weight:600;max-width:30ch}
-.strip{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:0 var(--g);scroll-padding-inline:var(--g);margin-top:clamp(30px,4vw,56px);scrollbar-width:none}
+/* EDGY / MAI MUCKE */
+.edgy{background:var(--bg);border-top:1px solid var(--line)}
+.edgy .label{color:var(--edgy)}
+.edgy .big{font:400 clamp(2.6rem,11vw,5rem)/1 var(--display);color:var(--text)}
+.edgy .big small{display:block;font:600 1rem/1.4 var(--body);color:var(--muted);margin-top:.4rem;text-transform:none;letter-spacing:0}
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px var(--gutter) 8px;margin:0 calc(var(--gutter)*-1);scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
-.strip figure{flex:0 0 auto;height:clamp(240px,64vw,480px);scroll-snap-align:start;background:var(--moss)}
-.strip img{height:100%;width:auto;max-width:none;filter:saturate(.9) contrast(1.03)}
-.mm-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--g);margin-top:12px}
-.credit{font:500 .82rem/1.3 var(--mono);color:var(--muted)}
-.strip-nav{display:none;gap:6px}
-.strip-nav button{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--s500);background:transparent;color:var(--s100);cursor:pointer}
-.strip-nav button:hover{border-color:var(--s100);background:rgba(255,255,255,.06)}
-.strip-nav svg{width:20px;height:20px}
-@media (min-width:1000px){
-  .mm-head{grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:end}
-  .mm-num{grid-column:1/9;grid-row:1/3;font-size:min(23vw,21rem)}
-  .mm-h{grid-column:9/13;grid-row:1;align-self:end;max-width:11ch}
-  .mm-cap{grid-column:9/13;grid-row:2;align-self:end;padding-bottom:1.6rem}
-  .strip-nav{display:flex}
-}
-
-/* WER WIR SIND: EDGY übernimmt die Seite */
-.about{position:relative;display:flow-root;background:var(--edgy);color:var(--ink);padding:0 var(--g) clamp(70px,10vw,130px)}
-.about-logo{position:relative;z-index:2;display:block;width:min(80vw,640px);margin-top:calc(min(80vw,640px) * -.3);margin-left:-1.5%}
-.about-logo img{width:100%;height:auto;filter:brightness(0)}
-@supports (mix-blend-mode:difference){
-  .about-logo{mix-blend-mode:difference}
-  .about-logo img{filter:none}
-}
-.about h2{font:400 clamp(2.6rem,11vw,5.6rem)/.9 var(--poster);text-transform:uppercase;margin-top:clamp(18px,3vw,30px)}
-.about-txt p{font-size:1.08rem;line-height:1.58;max-width:44ch;margin-top:16px}
-.about-txt .stance{font:400 clamp(2rem,9.4vw,3.8rem)/.94 var(--poster);text-transform:uppercase;max-width:none;margin:26px 0 22px}
-.about-txt .stance span{display:block}
-.about .btn{margin-top:26px}
-.about :focus-visible{outline-color:var(--ink)}
-@media (min-width:1000px){
-  .about{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col);align-items:end;padding-top:clamp(64px,6vw,100px)}
-  .about-logo{grid-column:1/7;align-self:start;margin-left:-2%;margin-top:calc(min(80vw,640px) * -.3 - clamp(64px,6vw,100px))}
-  .about-txt{grid-column:8/13;padding-bottom:.6rem}
-  .about h2{margin-top:0}
-}
+.strip figure{flex:0 0 auto;width:min(78vw,420px);aspect-ratio:4/5;border-radius:14px;overflow:hidden;scroll-snap-align:center;background:var(--forest-700)}
+.strip img{width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.03)}
+.credit{font-size:.8rem;color:var(--muted);margin-top:10px}
+.about{display:grid;gap:32px;margin-top:64px}
+.about p{color:var(--silver-300);max-width:56ch}
+.about .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+@media(min-width:900px){.about{grid-template-columns:1fr 1fr;gap:64px}}
 
 /* FOOTER */
-footer{background:var(--bg);padding:60px var(--g) 130px;color:var(--muted);font-size:.92rem}
-.foot-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;margin-bottom:28px}
-.logos{display:flex;align-items:center;gap:26px}
-.logos .l-edgy{height:68px;width:auto}
-.logos .l-saal{height:44px;width:auto;opacity:.92}
-.logos i{width:1px;height:48px;background:var(--line)}
-.links{display:flex;flex-wrap:wrap;gap:0 4px;margin-left:-10px}
-.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;text-decoration:none;color:var(--s300)}
-.links a:hover{color:var(--edgy)}
-details.impressum{max-width:62ch}
-details.impressum summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;color:var(--s300);list-style:none}
+footer{border-top:1px solid var(--line);padding:56px 0 120px;color:var(--muted);font-size:.88rem}
+footer .logos{display:flex;align-items:center;gap:22px;margin-bottom:28px}
+footer .logos img{height:34px;width:auto;opacity:.9}
+footer .logos img.edgy{height:60px;opacity:1}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:28px}
+footer .links a{text-decoration:none;color:var(--silver-300)}
+details.impressum summary{cursor:pointer;color:var(--silver-300);list-style:none}
 details.impressum summary::-webkit-details-marker{display:none}
-details.impressum summary::after{content:"+";font:500 1.1rem/1 var(--mono);margin-left:.6em;color:var(--s500)}
-details.impressum[open] summary::after{content:"\2212"}
-details.impressum[open] summary{margin-bottom:10px}
-details.impressum p+p{margin-top:1em}
-details.impressum a{color:var(--s300)}
-.copy{margin-top:28px;font:500 .82rem/1.3 var(--mono)}
-@media (min-width:1000px){footer{padding-bottom:64px}}
+details.impressum[open] summary{margin-bottom:14px}
+details.impressum p{max-width:62ch}
 
-/* STICKY-TICKETLEISTE (mobil) */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--g) max(10px,env(safe-area-inset-bottom));background:rgba(7,9,10,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
+/* STICKY BAR (mobil) */
+.sticky{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:rgba(11,20,17,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,0,0,.5);transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .sticky.show{transform:none}
-.sticky span{font:400 1.25rem/1 var(--poster);text-transform:uppercase;letter-spacing:.03em;color:var(--s100)}
-.sticky span em{font-style:normal;color:var(--s300)}
-@media (min-width:1000px){.sticky{display:none}}
+.sticky span{font:600 .9rem/1.2 var(--body)}
+.sticky span em{font-style:normal;color:var(--muted);font-weight:400}
+.sticky .btn{min-height:44px;padding:0 1.3em}
+@media(min-width:900px){.sticky{display:none}}
 
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .fireflies i{opacity:.6}
-  .js .rise,.js .wipe{opacity:1;transform:none;clip-path:none}
-}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(10px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
 <header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="EDGY Startseite">
-    <picture>
-      <source type="image/webp" srcset="img/edgy-logo-280.webp 280w, img/edgy-logo-560.webp 560w" sizes="(min-width: 1000px) 146px, 100px">
-      <img src="img/edgy-logo-280.png" srcset="img/edgy-logo-280.png 280w, img/edgy-logo-560.png 560w" sizes="(min-width: 1000px) 146px, 100px" alt="EDGY" width="280" height="269">
-    </picture>
-  </a>
-  <nav class="menu" aria-label="Abschnitte">
-    <a href="#lineup">Line-up</a>
-    <a href="#ort"><span class="dt-only">Der&nbsp;</span>Ort</a>
-    <a class="btn btn-sm" href="#tickets">Tickets</a>
-  </nav>
+  <a href="#top" aria-label="EDGY Startseite"><picture><source srcset="img/edgy-logo-280.webp 280w, img/edgy-logo-560.webp 560w" sizes="96px" type="image/webp"><img src="img/edgy-logo-280.png" srcset="img/edgy-logo-280.png 280w, img/edgy-logo-560.png 560w" sizes="96px" alt="EDGY" width="280" height="269"></picture></a>
+  <a class="tix" href="#tickets">Tickets</a>
 </header>
 
 <main id="top">
@@ -408,189 +237,166 @@ details.impressum a{color:var(--s300)}
     <i style="left:11%;top:50%;--d:9.5s;--w:1.8s;--x:25px;--y:-35px"></i>
     <i style="left:38%;top:44%;--d:14.5s;--w:6.5s;--x:-20px;--y:-40px"></i>
   </div>
-  <div class="hero-in">
-    <div class="hero-title">
-      <p class="kicker">Solingens Indoor Festival</p>
-      <h1 class="wordmark"><span class="l"><span class="chrome">Forest</span></span> <span class="l"><span class="chrome">Festival</span></span></h1>
-    </div>
-    <div class="hero-info">
-      <p class="meta"><b class="nw date">Fr 13.11.2026</b><span>·</span><b class="nw">Walder Stadtsaal</b><span>·</span><b class="nw">ab 21 Uhr</b></p>
-      <p class="lead">Ein Saal von 1925 wird für eine Nacht zum Wald. Headliner: Tube &amp; Berger.</p>
-      <div class="cta-row">
-        <a class="btn" href="#tickets">Tickets sichern <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
-        <p class="note">Early Bird ausverkauft. <b>Phase 2 läuft.</b></p>
-      </div>
-    </div>
+  <div class="wrap">
+    <p class="label">Solingens Indoor Festival</p>
+    <h1 class="silver">Forest<br>Festival</h1>
+    <p class="meta"><b class="nw">Fr 13.11.2026</b><span>·</span><b class="nw">Walder Stadtsaal</b><span>·</span><b class="nw">ab 21 Uhr</b></p>
+    <p class="lead">Ein Saal von 1925 wird für eine Nacht zum Wald. Headliner: Tube &amp; Berger.</p>
+    <a class="btn btn-primary" href="#tickets">Tickets sichern</a>
+    <p class="note">Early Bird ausverkauft. <b>Phase 2 läuft.</b></p>
   </div>
 </section>
 
 <!-- TICKETS -->
-<section class="tickets" id="tickets" aria-label="Tickets">
-  <p class="big chrome wipe tix-date" aria-hidden="true">13.11.</p>
-  <div class="tix">
-    <h2 class="tix-h"><span>Sei</span> <span>dabei</span></h2>
-    <div class="tiers">
-      <article class="tier tier-now">
-        <p class="kick"><i class="live" aria-hidden="true"></i>Jetzt erhältlich</p>
+<section class="tickets" id="tickets">
+  <div class="wrap">
+    <p class="label rv">Tickets</p>
+    <h2 class="rv">Sei dabei</h2>
+    <div class="cards">
+      <article class="card active rv">
+        <p class="label">Jetzt erhältlich</p>
         <h3>Phase 2</h3>
         <p class="small">Solange der Vorrat reicht. Danach wird es teurer.</p>
-        <a class="btn" href="https://www.eventim.de/event/forest-festival-walder-stadtsaal-walder-stadtsaal-22087939/">Bei Eventim kaufen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17.5 17 7M8.5 6.5H17.5V15.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+        <a class="btn btn-primary" href="https://www.eventim.de/event/forest-festival-walder-stadtsaal-walder-stadtsaal-22087939/">Bei Eventim kaufen</a>
       </article>
-      <article class="tier tier-crew">
-        <p class="kick">Für deine Crew</p>
+      <article class="card rv">
+        <p class="label">Für deine Crew</p>
         <h3>4er-Ticket</h3>
-        <p class="price big chrome wipe">80 €</p>
+        <p class="price">80 €</p>
         <p class="small">Vier Leute, ein Ticket. Nur 20 Stück.</p>
-        <a class="btn btn-s" href="https://www.eventim.de/event/forest-festival-walder-stadtsaal-walder-stadtsaal-22087939/">4er-Ticket sichern <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17.5 17 7M8.5 6.5H17.5V15.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+        <a class="btn btn-ghost" href="https://www.eventim.de/event/forest-festival-walder-stadtsaal-walder-stadtsaal-22087939/">4er-Ticket sichern</a>
       </article>
-      <article class="tier tier-gone">
-        <p class="kick">Early Bird</p>
+      <article class="card gone rv">
+        <p class="label">Early Bird</p>
         <h3>Phase 1</h3>
         <p class="small">Ausverkauft. Danke euch!</p>
       </article>
     </div>
-    <p class="tix-info">Tickets gibt es auch direkt im <a href="https://www.walder-stadtsaal.de/">Walder Stadtsaal</a>. Dazu kommt eine limitierte Abendkasse.</p>
+    <p class="tix-info rv">Tickets gibt es auch direkt im <a href="https://www.walder-stadtsaal.de/">Walder Stadtsaal</a>. Dazu kommt eine limitierte Abendkasse.</p>
   </div>
 </section>
 
 <!-- LINE-UP -->
-<section class="lineup" id="lineup" aria-label="Line-up">
-  <div class="lu-top">
-    <h2 class="lu-h"><span class="lu-7 big chrome wipe">7</span> <span class="lu-t"><span>Acts.</span> <span>Eine Nacht.</span></span></h2>
-    <p class="intro">Eine neue Tradition: Zweimal im Jahr rufen Tube &amp; Berger ganz Solingen zusammen. Sonst stehen die beiden auf den großen Bühnen der Welt. An diesen zwei Tagen spielen sie zu Hause. Im Mai kamen über 5.000 Leute auf den Ohligser Marktplatz, im November wird der Walder Stadtsaal zum Wald. Festival-Feeling, für das man sonst bis nach Amsterdam oder Ibiza fährt, gibt es jetzt auch hier.</p>
-  </div>
-  <ul class="acts" id="acts">
-    <li class="rise" style="--i:0"><picture><source srcset="img/kapsel-tube-berger.webp" type="image/webp"><img src="img/kapsel-tube-berger.jpg" alt="Tube &amp; Berger in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Tube &amp; Berger</span></li>
-    <li class="rise" style="--i:1"><picture><source srcset="img/kapsel-nick-schwenderling.webp" type="image/webp"><img src="img/kapsel-nick-schwenderling.jpg" alt="Nick Schwenderling in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Nick Schwenderling</span></li>
-    <li class="rise" style="--i:2"><picture><source srcset="img/kapsel-felicia-bianco.webp" type="image/webp"><img src="img/kapsel-felicia-bianco.jpg" alt="Felicia Bianco in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Felicia Bianco</span></li>
-    <li class="rise" style="--i:3"><picture><source srcset="img/kapsel-frank-sonic.webp" type="image/webp"><img src="img/kapsel-frank-sonic.jpg" alt="Frank Sonic in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Frank Sonic</span></li>
-    <li class="rise" style="--i:4"><picture><source srcset="img/kapsel-roxy-nox.webp" type="image/webp"><img src="img/kapsel-roxy-nox.jpg" alt="Roxy Nox in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Roxy Nox</span></li>
-    <li class="rise" style="--i:5"><picture><source srcset="img/kapsel-robin-giers-bjarne.webp" type="image/webp"><img src="img/kapsel-robin-giers-bjarne.jpg" alt="Robin Giers &amp; Bjarne in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Robin Giers &amp; Bjarne</span></li>
-    <li class="rise" style="--i:6"><picture><source srcset="img/kapsel-juicy-terry.webp" type="image/webp"><img src="img/kapsel-juicy-terry.jpg" alt="Juicy Terry in der Glaskapsel" width="420" height="1129" loading="lazy" decoding="async"></picture><span class="name">Juicy Terry</span></li>
-  </ul>
-  <div class="shelf-bar" id="shelfbar" aria-hidden="true"><i></i></div>
-  <div class="lu-foot">
-    <div class="after-cta">
-      <a class="btn" href="#tickets">Tickets sichern <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M12.5 5.5 19 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
-      <span>Musik ab 21 Uhr bis open end</span>
+<section class="lineup" id="lineup">
+  <div class="wrap grid">
+    <div>
+      <p class="label rv">Line-up</p>
+      <h2 class="rv">7 Acts. Eine Nacht.</h2>
+      <p class="intro rv">Eine neue Tradition: Zweimal im Jahr rufen Tube &amp; Berger ganz Solingen zusammen. Sonst stehen die beiden auf den großen Bühnen der Welt. An diesen zwei Tagen spielen sie zu Hause. Im Mai kamen über 5.000 Leute auf den Ohligser Marktplatz, im November wird der Walder Stadtsaal zum Wald. Festival-Feeling, für das man sonst bis nach Amsterdam oder Ibiza fährt, gibt es jetzt auch hier.</p>
+      <ul class="acts">
+        <li class="head rv"><span class="name">Tube &amp; Berger</span></li>
+        <li class="rv"><span class="name">Nick Schwenderling</span></li>
+        <li class="rv"><span class="name">Felicia Bianco</span></li>
+        <li class="rv"><span class="name">Frank Sonic</span></li>
+        <li class="rv"><span class="name">Roxy Nox</span></li>
+        <li class="rv"><span class="name">Robin Giers &amp; Bjarne</span></li>
+        <li class="rv"><span class="name">Juicy Terry</span></li>
+      </ul>
+      <div class="after-cta rv">
+        <a class="btn btn-primary" href="#tickets">Tickets sichern</a>
+        <span class="label">Musik ab 21 Uhr bis open end</span>
+      </div>
     </div>
-    <figure class="flyer">
-      <a href="img/forest-flyer.jpg"><picture><source srcset="img/forest-flyer.webp" type="image/webp"><img src="img/forest-flyer.jpg" alt="Flyer Forest Festival mit allen sieben Acts" width="900" height="1125" loading="lazy" decoding="async"></picture></a>
-      <figcaption>Teil den Flyer mit deiner Crew.</figcaption>
+    <figure class="rv">
+      <div class="flyer"><picture><source srcset="img/forest-flyer.webp" type="image/webp"><img src="img/forest-flyer.jpg" alt="Flyer Forest Festival mit allen sieben Acts" width="900" height="1125" loading="lazy"></picture></div>
+      <figcaption class="flyer-cap">Teil den Flyer mit deiner Crew.</figcaption>
     </figure>
   </div>
 </section>
 
 <!-- ORT -->
-<section class="ort" id="ort" aria-label="Der Ort">
-  <div class="ort-img"><picture><source srcset="img/forest-wald-800.webp 800w, img/forest-wald.webp 1200w" sizes="(min-width: 1000px) 50vw, 100vw" type="image/webp"><img src="img/forest-wald.jpg" alt="Wald mit Glaskapsel, Motiv des Forest Festivals" width="1200" height="1200" loading="lazy" decoding="async"></picture></div>
-  <div class="ort-txt">
-    <h2>Ein Denkmal wird zum Wald</h2>
-    <p>Der Walder Stadtsaal steht seit 1985 unter Denkmalschutz. Am 13.11. bauen wir ihn um: eine große LED-Wand mit Waldvisuals zwischen Fantasy und Sci-Fi, dazu echte Pflanzen. So habt ihr den Saal noch nie gesehen.</p>
-    <dl class="facts">
-      <div><dt>Datum</dt><dd>Freitag, 13.11.2026</dd></div>
-      <div><dt>Start</dt><dd>21 Uhr</dd></div>
-      <div class="wide"><dt>Ort</dt><dd><a href="https://maps.google.com/?q=Walder+Stadtsaal,+Friedrich-Ebert-Str.+85-87,+42719+Solingen">Walder Stadtsaal<br>Friedrich-Ebert-Str. 85-87, 42719 Solingen</a></dd></div>
-      <div><dt>Einlass</dt><dd>ab 18 Jahren</dd></div>
-      <div><dt>Veranstalter</dt><dd>EDGY &amp; Walder Stadtsaal</dd></div>
-    </dl>
-  </div>
-</section>
-
-<!-- MAI MUCKE -->
-<section class="mm" id="edgy" aria-labelledby="mm-h">
-  <div class="mm-head">
-    <h2 class="mm-h" id="mm-h">Das waren wir am <span class="nw">1. Mai</span></h2>
-    <p class="mm-num big chrome wipe">5.000+</p>
-    <p class="mm-cap">Menschen beim Mai Mucke Festival auf dem Ohligser Marktplatz</p>
-  </div>
-  <div class="strip" id="strip" role="list" aria-label="Fotos vom Mai Mucke Festival" tabindex="0">
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_crowd_night1-900.webp 900w, img/mm_crowd_night1-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_crowd_night1-web.jpg" alt="Crowd am Abend beim Mai Mucke Festival" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_dj_stage-600.webp 600w, img/mm_dj_stage-1000.webp 1000w" sizes="(min-width: 1000px) 320px, 43vw"><img src="img/mm_dj_stage-web.jpg" alt="DJ-Bühne beim Mai Mucke Festival" width="1000" height="1500" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_crowd_day2-900.webp 900w, img/mm_crowd_day2-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_crowd_day2-web.jpg" alt="Crowd tagsüber auf dem Ohligser Marktplatz" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_p5-900.webp 900w, img/mm_p5-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_p5-web.jpg" alt="Mai Mucke Festival" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_p8-900.webp 900w, img/mm_p8-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_p8-web.jpg" alt="Mai Mucke Festival" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_p10-900.webp 900w, img/mm_p10-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_p10-web.jpg" alt="Mai Mucke Festival" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-    <figure role="listitem"><picture><source type="image/webp" srcset="img/mm_p12-900.webp 900w, img/mm_p12-1500.webp 1500w" sizes="(min-width: 1000px) 720px, 96vw"><img src="img/mm_p12-web.jpg" alt="Mai Mucke Festival" width="1500" height="1000" loading="lazy" decoding="async"></picture></figure>
-  </div>
-  <div class="mm-foot">
-    <p class="credit">Fotos: Janine Wagner</p>
-    <div class="strip-nav">
-      <button type="button" data-dir="-1" aria-label="Vorherige Fotos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11.5 5.5 5 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
-      <button type="button" data-dir="1" aria-label="Nächste Fotos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M12.5 5.5 19 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+<section class="ort" id="ort">
+  <div class="wrap grid">
+    <div class="img rv"><picture><source srcset="img/forest-wald.webp" type="image/webp"><img src="img/forest-wald.jpg" alt="Wald mit Glaskapsel, Motiv des Forest Festivals" width="1200" height="1200" loading="lazy"></picture></div>
+    <div>
+      <p class="label rv">Der Ort</p>
+      <h2 class="rv">Ein Denkmal wird zum Wald</h2>
+      <p class="rv">Der Walder Stadtsaal steht seit 1985 unter Denkmalschutz. Am 13.11. bauen wir ihn um: eine große LED-Wand mit Waldvisuals zwischen Fantasy und Sci-Fi, dazu echte Pflanzen. So habt ihr den Saal noch nie gesehen.</p>
+      <ul class="facts rv">
+        <li><span>Datum</span><span>Freitag, 13.11.2026</span></li>
+        <li><span>Start</span><span>21 Uhr</span></li>
+        <li><span>Ort</span><span><a href="https://maps.google.com/?q=Walder+Stadtsaal,+Friedrich-Ebert-Str.+85-87,+42719+Solingen">Walder Stadtsaal<br>Friedrich-Ebert-Str. 85-87, 42719 Solingen</a></span></li>
+        <li><span>Einlass</span><span>ab 18 Jahren</span></li>
+        <li><span>Veranstalter</span><span>EDGY &amp; Walder Stadtsaal</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- WER WIR SIND -->
-<section class="about" id="wer" aria-labelledby="about-h">
-  <picture class="about-logo">
-    <source type="image/webp" srcset="img/edgy-logo-560.webp 560w, img/edgy-logo-1038.webp 1038w" sizes="(min-width: 1000px) 640px, 80vw">
-    <img src="img/edgy-logo-1038.png" srcset="img/edgy-logo-560.png 560w, img/edgy-logo-1038.png 1038w" sizes="(min-width: 1000px) 640px, 80vw" alt="EDGY" width="1038" height="998" loading="lazy" decoding="async">
-  </picture>
-  <div class="about-txt">
-    <h2 id="about-h">Wer wir sind</h2>
-    <p>Wir sind eine Kulturinitiative aus Solingen, gegründet von Tube &amp; Berger und MAKU. Wir holen Events in die Stadt, die es sonst nur woanders gibt.</p>
-    <p class="stance"><span>Kein Party-Brand.</span> <span>Eine Haltung.</span></p>
-    <p>Danach geht es weiter: Pop-ups, Talks, Podcast. Folgt uns, dann verpasst ihr nichts.</p>
-    <a class="btn btn-ink" href="https://www.instagram.com/edgy.solingen">@edgy.solingen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17.5 17 7M8.5 6.5H17.5V15.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
+<!-- EDGY / MAI MUCKE -->
+<section class="edgy" id="edgy">
+  <div class="wrap">
+    <p class="label rv">Das waren wir am 1. Mai</p>
+    <p class="big rv">5.000+<small>Menschen beim Mai Mucke Festival auf dem Ohligser Marktplatz</small></p>
+    <div class="strip" role="list" aria-label="Fotos vom Mai Mucke Festival">
+      <figure role="listitem"><img src="img/mm_crowd_night1-web.jpg" alt="Crowd am Abend beim Mai Mucke Festival" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_dj_stage-web.jpg" alt="DJ-Bühne beim Mai Mucke Festival" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_crowd_day2-web.jpg" alt="Crowd tagsüber auf dem Ohligser Marktplatz" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_p5-web.jpg" alt="Mai Mucke Festival" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_p8-web.jpg" alt="Mai Mucke Festival" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_p10-web.jpg" alt="Mai Mucke Festival" loading="lazy"></figure>
+      <figure role="listitem"><img src="img/mm_p12-web.jpg" alt="Mai Mucke Festival" loading="lazy"></figure>
+    </div>
+    <p class="credit">Fotos: Janine Wagner</p>
+
+    <div class="about">
+      <div>
+        <p class="label rv">Wer wir sind</p>
+        <h2 class="rv logo-big"><picture><source srcset="img/edgy-logo-560.webp 560w, img/edgy-logo-1038.webp 1038w" sizes="(min-width: 900px) 400px, 42vw" type="image/webp"><img src="img/edgy-logo-560.png" srcset="img/edgy-logo-560.png 560w, img/edgy-logo-1038.png 1038w" sizes="(min-width: 900px) 400px, 42vw" alt="EDGY" width="560" height="538" loading="lazy"></picture></h2>
+      </div>
+      <div>
+        <p class="rv">Wir sind eine Kulturinitiative aus Solingen, gegründet von Tube &amp; Berger und MAKU. Wir holen Events in die Stadt, die es sonst nur woanders gibt. Kein Party-Brand. Eine Haltung.</p>
+        <p class="rv">Danach geht es weiter: Pop-ups, Talks, Podcast. Folgt uns, dann verpasst ihr nichts.</p>
+        <div class="row rv">
+          <a class="btn btn-ghost" href="https://www.instagram.com/edgy.solingen">@edgy.solingen</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="foot-top">
+  <div class="wrap">
     <div class="logos">
-      <picture><source type="image/webp" srcset="img/edgy-logo-280.webp"><img class="l-edgy" src="img/edgy-logo-280.png" alt="EDGY" width="280" height="269" loading="lazy"></picture>
-      <i aria-hidden="true"></i>
-      <picture><source type="image/webp" srcset="img/logo-stadtsaal.webp"><img class="l-saal" src="img/logo-stadtsaal.png" alt="Walder Stadtsaal" width="400" height="153" loading="lazy"></picture>
+      <img class="edgy" src="img/edgy-logo-280.png" alt="EDGY" width="280" height="269" loading="lazy">
+      <img src="img/logo-stadtsaal.png" alt="Walder Stadtsaal" width="400" height="153" loading="lazy">
     </div>
     <nav class="links" aria-label="Rechtliches">
       <a href="#impressum" onclick="document.getElementById('impressum').open=true">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="https://www.instagram.com/edgy.solingen">Instagram</a>
     </nav>
+    <details class="impressum" id="impressum">
+      <summary>Impressum</summary>
+      <p><b>Angaben gemäß § 5 DDG</b><br>Arndt Roerig<br>Hitdorfer Straße 186<br>51371 Leverkusen<br>Deutschland</p>
+      <p><b>Kontakt</b><br>E-Mail: <a href="mailto:tube@kittball.com">tube@kittball.com</a><br>Instagram: <a href="https://www.instagram.com/edgy.solingen">@edgy.solingen</a></p>
+      <p><b>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</b><br>Arndt Roerig, Anschrift wie oben</p>
+      <p><b>Haftung für Inhalte</b><br>Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität übernehmen wir keine Gewähr. Für externe Links, etwa zu Eventim, sind ausschließlich deren Betreiber verantwortlich.</p>
+      <p><b>Urheberrecht</b><br>Die Inhalte und Werke auf dieser Seite unterliegen dem deutschen Urheberrecht. Fotos Mai Mucke: Janine Wagner.</p>
+    </details>
+    <p style="margin-top:28px">© 2026 EDGY Solingen</p>
   </div>
-  <details class="impressum" id="impressum">
-    <summary>Impressum</summary>
-    <p><b>Angaben gemäß § 5 DDG</b><br>Arndt Roerig<br>Hitdorfer Straße 186<br>51371 Leverkusen<br>Deutschland</p>
-    <p><b>Kontakt</b><br>E-Mail: <a href="mailto:tube@kittball.com">tube@kittball.com</a><br>Instagram: <a href="https://www.instagram.com/edgy.solingen">@edgy.solingen</a></p>
-    <p><b>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</b><br>Arndt Roerig, Anschrift wie oben</p>
-    <p><b>Haftung für Inhalte</b><br>Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität übernehmen wir keine Gewähr. Für externe Links, etwa zu Eventim, sind ausschließlich deren Betreiber verantwortlich.</p>
-    <p><b>Urheberrecht</b><br>Die Inhalte und Werke auf dieser Seite unterliegen dem deutschen Urheberrecht. Fotos Mai Mucke: Janine Wagner.</p>
-  </details>
-  <p class="copy">© 2026 EDGY Solingen</p>
 </footer>
 
 <div class="sticky" id="sticky" aria-hidden="true">
   <span>Forest Festival <em>· 13.11.</em></span>
-  <a class="btn btn-sm" href="#tickets" tabindex="-1">Tickets</a>
+  <a class="btn btn-primary" href="#tickets" tabindex="-1">Tickets</a>
 </div>
 
 <script>
 (function(){
-  var d=document,nav=d.getElementById('nav'),sticky=d.getElementById('sticky'),
-      hero=d.getElementById('hero'),tix=d.getElementById('tickets');
-  var heroOut=false,tixIn=false,ticking=false;
-  function upd(){var s=heroOut&&!tixIn;sticky.classList.toggle('show',s);sticky.setAttribute('aria-hidden',String(!s));}
-  function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(function(){nav.classList.toggle('solid',window.scrollY>40);ticking=false;});}
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-  var anim=d.querySelectorAll('.rise,.wipe');
+  var nav=document.getElementById('nav'),sticky=document.getElementById('sticky'),
+      hero=document.getElementById('hero'),tix=document.getElementById('tickets');
+  var heroOut=false,tixIn=false;
+  function upd(){sticky.classList.toggle('show',heroOut&&!tixIn);sticky.setAttribute('aria-hidden',!(heroOut&&!tixIn));}
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(e){heroOut=!e[0].isIntersecting;upd();},{threshold:.15}).observe(hero);
+    new IntersectionObserver(function(e){heroOut=!e[0].isIntersecting;nav.classList.toggle('solid',heroOut);upd();},{threshold:.15}).observe(hero);
     new IntersectionObserver(function(e){tixIn=e[0].isIntersecting;upd();},{threshold:.2}).observe(tix);
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
-    anim.forEach(function(el){io.observe(el);});
-  }else{anim.forEach(function(el){el.classList.add('in');});}
-  /* Fortschrittsbalken unter den Kapseln (mobil) */
-  var acts=d.getElementById('acts'),bar=d.getElementById('shelfbar');
-  function shelf(){var sw=acts.scrollWidth,cw=acts.clientWidth;if(sw<=cw+2){bar.style.visibility='hidden';return;}bar.style.visibility='';bar.style.setProperty('--w',(cw/sw).toFixed(3));bar.style.setProperty('--x',(acts.scrollLeft/sw).toFixed(3));}
-  acts.addEventListener('scroll',function(){requestAnimationFrame(shelf);},{passive:true});
-  window.addEventListener('resize',shelf);shelf();
-  /* Pfeile für die Fotostrecke (Desktop) */
-  var strip=d.getElementById('strip');
-  d.querySelectorAll('.strip-nav button').forEach(function(b){b.addEventListener('click',function(){strip.scrollBy({left:(+b.getAttribute('data-dir'))*strip.clientWidth*.8,behavior:'smooth'});});});
-  if(location.hash==='#impressum'){d.getElementById('impressum').open=true;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}
+  if(location.hash==='#impressum'){document.getElementById('impressum').open=true;}
 })();
 </script>
 </body>
