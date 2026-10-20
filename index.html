@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="fonts/archivo-black.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/forest-hero-m.webp" media="(max-width: 800px)">
-<link rel="preload" as="image" href="img/forest-hero-d.webp" media="(min-width: 801px)">
+<link rel="preload" as="image" type="image/webp" imagesrcset="img/forest-hero-d-1920.webp 1920w, img/forest-hero-d-3200.webp 3200w" imagesizes="100vw" media="(min-width: 801px)">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MusicEvent",
 "name":"Forest Festival",
@@ -181,8 +181,8 @@ details.impressum p{max-width:62ch}
 <!-- HERO -->
 <section class="hero" id="hero">
   <picture>
-    <source media="(min-width: 801px)" srcset="img/forest-hero-d.webp" type="image/webp">
-    <source media="(min-width: 801px)" srcset="img/forest-hero-d.jpg">
+    <source media="(min-width: 801px)" srcset="img/forest-hero-d-1920.webp 1920w, img/forest-hero-d-3200.webp 3200w" sizes="100vw" type="image/webp">
+    <source media="(min-width: 801px)" srcset="img/forest-hero-d-1920.jpg 1920w, img/forest-hero-d-3200.jpg 3200w" sizes="100vw">
     <source srcset="img/forest-hero-m.webp" type="image/webp">
     <img src="img/forest-hero-m.jpg" alt="Nebliger Wald mit leuchtender Glaskapsel" width="1080" height="1929" fetchpriority="high">
   </picture>
