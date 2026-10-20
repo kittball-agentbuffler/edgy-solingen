@@ -69,8 +69,9 @@ p+p{margin-top:1em}
 /* NAV */
 .nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);transition:background .3s,backdrop-filter .3s}
 .nav.solid{background:rgba(7,9,10,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav img{height:clamp(62px,6.5vw,92px);width:auto;transition:height .3s}
-.nav.solid img{height:clamp(46px,4.5vw,62px)}
+.nav{padding-top:10px;padding-bottom:10px}
+.nav img{height:clamp(78px,7.5vw,108px);width:auto;transition:height .3s}
+.nav.solid img{height:clamp(52px,4.8vw,66px)}
 .about .logo-big{margin:.6rem 0 0}
 .about .logo-big img{width:clamp(220px,42vw,400px);height:auto}
 .nav a.tix{font:600 .85rem/1 var(--body);text-decoration:none;padding:.7em 1.1em;border:1px solid var(--silver-500);border-radius:999px}
@@ -178,7 +179,7 @@ details.impressum p{max-width:62ch}
 <body>
 
 <header class="nav" id="nav">
-  <a href="#top" aria-label="EDGY Startseite"><picture><source srcset="img/edgy-logo-280.webp 280w, img/edgy-logo-560.webp 560w" sizes="96px" type="image/webp"><img src="img/edgy-logo-280.png" srcset="img/edgy-logo-280.png 280w, img/edgy-logo-560.png 560w" sizes="96px" alt="EDGY" width="280" height="269"></picture></a>
+  <a href="#top" aria-label="EDGY Startseite"><picture><source srcset="img/edgy-logo-280.webp 280w, img/edgy-logo-560.webp 560w" sizes="112px" type="image/webp"><img src="img/edgy-logo-280.png" srcset="img/edgy-logo-280.png 280w, img/edgy-logo-560.png 560w" sizes="112px" alt="EDGY" width="280" height="269"></picture></a>
   <a class="tix" href="#tickets">Tickets</a>
 </header>
 
