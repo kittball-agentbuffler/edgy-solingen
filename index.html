@@ -68,7 +68,11 @@ p+p{margin-top:1em}
 /* NAV */
 .nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);transition:background .3s,backdrop-filter .3s}
 .nav.solid{background:rgba(7,9,10,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav img{height:clamp(30px,3.2vw,42px);width:auto}
+.nav{padding-top:10px;padding-bottom:10px}
+.nav img{height:clamp(78px,7.5vw,108px);width:auto;transition:height .3s}
+.nav.solid img{height:clamp(52px,4.8vw,66px)}
+.about .logo-big{margin:.6rem 0 0}
+.about .logo-big img{width:clamp(220px,42vw,400px);height:auto}
 .nav a.tix{font:600 .85rem/1 var(--body);text-decoration:none;padding:.7em 1.1em;border:1px solid var(--silver-500);border-radius:999px}
 
 /* HERO */
@@ -149,6 +153,7 @@ p+p{margin-top:1em}
 footer{border-top:1px solid var(--line);padding:56px 0 120px;color:var(--muted);font-size:.88rem}
 footer .logos{display:flex;align-items:center;gap:22px;margin-bottom:28px}
 footer .logos img{height:34px;width:auto;opacity:.9}
+footer .logos img.edgy{height:60px;opacity:1}
 footer .links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:28px}
 footer .links a{text-decoration:none;color:var(--silver-300)}
 details.impressum summary{cursor:pointer;color:var(--silver-300);list-style:none}
@@ -173,7 +178,7 @@ details.impressum p{max-width:62ch}
 <body>
 
 <header class="nav" id="nav">
-  <a href="#top" aria-label="EDGY Startseite"><img src="img/logo-edgy.png" alt="EDGY" width="400" height="368"></a>
+  <a href="#top" aria-label="EDGY Startseite"><picture><source srcset="img/edgy-logo-280.webp 280w, img/edgy-logo-560.webp 560w" sizes="112px" type="image/webp"><img src="img/edgy-logo-280.png" srcset="img/edgy-logo-280.png 280w, img/edgy-logo-560.png 560w" sizes="112px" alt="EDGY" width="280" height="269"></picture></a>
   <a class="tix" href="#tickets">Tickets</a>
 </header>
 
@@ -337,7 +342,7 @@ details.impressum p{max-width:62ch}
     <div class="about">
       <div>
         <p class="label rv">Wer wir sind</p>
-        <h2 class="rv">EDGY</h2>
+        <h2 class="rv logo-big"><picture><source srcset="img/edgy-logo-560.webp 560w, img/edgy-logo-1038.webp 1038w" sizes="(min-width: 900px) 400px, 42vw" type="image/webp"><img src="img/edgy-logo-560.png" srcset="img/edgy-logo-560.png 560w, img/edgy-logo-1038.png 1038w" sizes="(min-width: 900px) 400px, 42vw" alt="EDGY" width="560" height="538" loading="lazy"></picture></h2>
       </div>
       <div>
         <p class="rv">Wir sind eine Kulturinitiative aus Solingen, gegründet von Tube &amp; Berger und MAKU. Wir holen Events in die Stadt, die es sonst nur woanders gibt. Kein Party-Brand. Eine Haltung.</p>
@@ -354,7 +359,7 @@ details.impressum p{max-width:62ch}
 <footer>
   <div class="wrap">
     <div class="logos">
-      <img src="img/logo-edgy.png" alt="EDGY" width="400" height="368" loading="lazy">
+      <img class="edgy" src="img/edgy-logo-280.png" alt="EDGY" width="280" height="269" loading="lazy">
       <img src="img/logo-stadtsaal.png" alt="Walder Stadtsaal" width="400" height="153" loading="lazy">
     </div>
     <nav class="links" aria-label="Rechtliches">
